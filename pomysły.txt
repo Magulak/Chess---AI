@@ -32,3 +32,7 @@ https://stackoverflow.com/questions/63446201/fast-way-to-do-a-boolean-check-betw
 ____________________________________________
 
 https://stackoverflow.com/questions/13614452/python-multidimensional-boolean-array
+
+_______________________________________
+
+Najpierw przemyśl jak to wszystko będzie działać, bo pisanie od nowa kodu ssie.
