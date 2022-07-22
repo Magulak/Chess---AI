@@ -23,3 +23,8 @@ a może tablica nr 5 nie powinna być True False. i np
 zajete miejsca = 0
 wolne miejsca = 1
 wolne miejsca, ale atakujące ( te z tablicy nr 4) = 2
+
+____________________________________
+szybkie sumowanie bootleanow 
+https://stackoverflow.com/questions/63446201/fast-way-to-do-a-boolean-check-between-two-lists-in-list-comprehension-in-python
+[l1[i] or l2[i] for i in range(len(l1))]
