@@ -28,7 +28,11 @@ ____________________________________
 szybkie sumowanie bootleanow 
 https://stackoverflow.com/questions/63446201/fast-way-to-do-a-boolean-check-between-two-lists-in-list-comprehension-in-python
 [l1[i] or l2[i] for i in range(len(l1))]
-
+____________________________________________
+warto robić historię ruchów za pomocą tablicy 1 i 2?
+jestem w stanie jakoś takie dane podać?
+bo jedna zapisana rozgrywka to pewnie z 50 tablic 8x8
+gdzie jedna tablica to jedno 8x8 z informacją o pozycji sojusniczych i wrogich pionków
 ____________________________________________
 
 https://stackoverflow.com/questions/13614452/python-multidimensional-boolean-array
