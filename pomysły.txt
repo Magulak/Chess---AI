@@ -17,3 +17,9 @@ w trakcie pisania tego powyżej doszedłem do wniosku, że chyba jednak jest pot
 3. Możliwe ruchy pionka ( o 1 od miejsca w którym stoi, tylko do przodu)
 4. Możliwe miejsca ataku ( możliwa do obliczenia jeżeli masz pozycja pionka + pozycja wrogich pionków). Ta tablica ma wyższy priorytet od innych tablic.
 5. Sumująca tablica [ sumuje wartości z [1,3] oraz nadpisuje je tablicą numer 4.
+
+__________________________________
+a może tablica nr 5 nie powinna być True False. i np 
+zajete miejsca = 0
+wolne miejsca = 1
+wolne miejsca, ale atakujące ( te z tablicy nr 4) = 2
