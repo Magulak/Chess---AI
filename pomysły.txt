@@ -33,6 +33,18 @@ ____________________________________________
 
 https://stackoverflow.com/questions/13614452/python-multidimensional-boolean-array
 
+_____________________________________
+
+Jak ai będzie zmieniać wartości w tablicy:
+
+będzie pętla, które przechodzi przez wszystkie wartości w checkers po kolei i kiedy wpadnie na tą którą chce zmienić to
+w def ()
+  bla bla bla
+  bla
+  bla
+  zmień wartość globalną ( bo chyba tylko tak się da zmieniać wartości spoza funkcji za pomocą funkcj, 
+  lub to może będzie poprostu szybsze od innych sposobów.
+
 _______________________________________
 
 Najpierw przemyśl jak to wszystko będzie działać, bo pisanie od nowa kodu ssie.
