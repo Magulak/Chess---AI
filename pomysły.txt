@@ -58,3 +58,5 @@ ODPOWIEDŹ PONIŻEJ!!!
 ____________________________________
 
 Tip for learning Patterns over Syntax - Try watching a tutorial in a language that you are not learning. For instance, if you're learning python, watch a tutorial for a project in java or c#. This way you'll get the over all logic for the project, but won't be able to just copy/paste code. In other words, you'll be forced to figure out the problem in the language you are working in. You will use different libraries and syntax, but the logic itself will be similar. Keep in mind this only works for tutorials that are about a specific project. I've done this myself a few times, and have always found it to be a rewarding way to spend an afternoon.
+
+przykład: https://www.youtube.com/watch?v=FAQmCAQ1s80
