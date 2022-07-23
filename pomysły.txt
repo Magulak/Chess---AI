@@ -10,7 +10,7 @@ tablica 3: decyduje gdzie pionek może się poruszyć. [ Wymaga danych z tablicy
 przesunąć to i tak można się tam przesunąć.
 
 --------------------------------------------------------------
-w trakcie pisania tego powyżej doszedłem do wniosku, że chyba jednak jest potrzebnie 5 tablic
+w trakcie pisania tego powyżej doszedłem do wniosku, że chyba jednak jest potrzebnie 5 tablic (zostawiam tekst powyżej bo dokładniej wyjasnie kocept dotyczacy tablic)
 
 1: Pozycje pionków
 2: Przynależność pionków:
