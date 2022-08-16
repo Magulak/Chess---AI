@@ -1,4 +1,5 @@
 #Zamiast 5 zmiennych może klasa :)?
+#zmiana w kodzie
 
 checkers1 = \
     (0, 0, 0, 0, 0, 0, 0, 0), \
@@ -51,4 +52,4 @@ checkers5 = \
     (0, 0, 0, 0, 0, 0, 0, 0), \
 
 
-print(type(checkers5[2][2]))
+
