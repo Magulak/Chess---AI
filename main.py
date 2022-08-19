@@ -1,5 +1,6 @@
 #Zamiast 5 zmiennych może klasa :)?
 #zmiana w kodzie
+#  Use numpy for loops on arrays (this should be wayyyyyyyy faster)
 
 checkers1 = \
     (0, 0, 0, 0, 0, 0, 0, 0), \
