@@ -1,3 +1,6 @@
+#Zamiast 5 zmiennych może klasa :)?
+#zmiana w kodzie
+#  Use numpy for loops on arrays (this should be wayyyyyyyy faster)
 #  (type_of_piece)
 class Chess:
 
