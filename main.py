@@ -10,6 +10,15 @@ class Chess:
         :param y2: - y coordinate of desired place
         :return: return change chess_board to state after the move / deny if move is illegal
         """
+
+        """  
+        bishop movement is going to be represented by bishopmovement.png
+        """
+
+        def attack(self):
+            print("attack")
+        #If friendly piece encounters enemy piece on its move, the enemy piece gets destroyed
+
         print("if:"
               " \n - Desired spot is empty"
               " \n - Selected piece have move_set that allows him to move there"
@@ -25,6 +34,10 @@ class Chess:
             ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
             ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
             ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)),
+
+        """
+        move_set()
+        """
 
         """
                 NEEDS FIXING
@@ -46,8 +59,7 @@ class Chess:
 
                 """
 
-    def attack(self):
-        print("attack")
+
 
     # what board is better? chess_board or chess_board2 ?
     chess_board = \
