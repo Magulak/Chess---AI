@@ -6,6 +6,11 @@ class Chess:
     class Pawn:
         print("Class for pawns")
 
+        def moveset(self, y, x):
+            if chess_board2[y, x] == [2, 2]:
+
+
+
     class Knight:
         print("Class for knights")
 
@@ -17,6 +22,7 @@ class Chess:
 
     class Bishop:
         print("Class for bishops")
+
 
     class Rook:
         print("Class for rooks")
@@ -45,28 +51,8 @@ class Chess:
               " \n - Selected piece have move_set that allows him to move there"
               " \n - No checkmate")
 
-    def move_set(self, type_of_piece, x, y):
-        if type_of_piece == 3:
-            print("Bishop moves")
-        """
-                NEEDS FIXING
-                :param y: y coordinate
-                :param x: x coordinate
-                :param type_of_piece: - e.g king(1) ,queen(6), pawn(2)
-                :return:
 
-                function will return move_set of specified chess_piece
-                eg. king(1)
 
-                current place = empty_board[x][y]
-
-                return # this is stupid, i wrote it just to show the idea
-
-                [x-1][y+1], [x][y+1], [x+1][y+1],
-                [x-1][y],[x+1][y]
-                [x-1][y-1], [x][y-1], [x+1][y-1],
-
-                """
 
     chess_board2 = [
         [[5, 2], [4, 2], [3, 2], [1, 2], [6, 2], [3, 2], [4, 2], [5, 2]],  # y0
