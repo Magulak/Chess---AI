@@ -1,8 +1,25 @@
-#Zamiast 5 zmiennych może klasa :)?
-#zmiana w kodzie
+# Zamiast 5 zmiennych może klasa :)?
+# zmiana w kodzie
 #  Use numpy for loops on arrays (this should be wayyyyyyyy faster)
 #  (type_of_piece)
 class Chess:
+    class Pawn:
+        print("Class for pawns")
+
+    class Knight:
+        print("Class for knights")
+
+    class King:
+        print("Class for kings")
+
+    class Queen:
+        print("Class for queens")
+
+    class Bishup:
+        print("Class for bishups")
+
+    class Rook:
+        print("Class for rooks")
 
     def move(self, board, x1, y1, x2, y2):
         """
@@ -20,7 +37,8 @@ class Chess:
 
         def attack(self):
             print("attack")
-        #If friendly piece encounters enemy piece on its move, the enemy piece gets destroyed
+
+        # If friendly piece encounters enemy piece on its move, the enemy piece gets destroyed
 
         print("if:"
               " \n - Desired spot is empty"
@@ -28,20 +46,8 @@ class Chess:
               " \n - No checkmate")
 
     def move_set(self, type_of_piece, x, y):
-        empty_board = \
-            ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
-            ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
-            ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
-            ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
-            ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
-            ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
-            ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
-            ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)),
-
-        """
-        move_set()
-        """
-
+        if type_of_piece == 3:
+            print("Bishop moves")
         """
                 NEEDS FIXING
                 :param y: y coordinate
@@ -55,14 +61,22 @@ class Chess:
                 current place = empty_board[x][y]
 
                 return # this is stupid, i wrote it just to show the idea
-                
+
                 [x-1][y+1], [x][y+1], [x+1][y+1],
                 [x-1][y],[x+1][y]
                 [x-1][y-1], [x][y-1], [x+1][y-1],
 
                 """
 
-
+        empty_board = \
+            ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
+            ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
+            ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
+            ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
+            ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
+            ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
+            ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
+            ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)),
 
     # what board is better? chess_board or chess_board2 ?
     chess_board = \
@@ -75,16 +89,19 @@ class Chess:
         (2, 2, 2, 2, 2, 2, 2, 2), \
         (5, 4, 3, 6, 1, 3, 4, 5),
 
-    chess_board2 = \
-        ((5, 2), (4, 2), (3, 2), (1, 2), (6, 2), (3, 2), (4, 2), (5, 2)), \
-        ((2, 2), (2, 2), (2, 2), (2, 2), (2, 2), (2, 2), (2, 2), (2, 2)), \
-        ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
-        ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
-        ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
-        ((0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)), \
-        ((2, 1), (2, 1), (2, 1), (2, 1), (2, 1), (2, 1), (2, 1), (2, 1)), \
-        ((5, 1), (4, 1), (3, 1), (6, 1), (1, 1), (3, 1), (4, 1), (5, 1)),
 
+
+    chess_board2 = \
+        [[[5, 2], [4, 2], [3, 2], [1, 2], [6, 2], [3, 2], [4, 2], [5, 2]], \
+        [[2, 2], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2]], \
+        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]], \
+        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]], \
+        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]], \
+        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]], \
+        [[2, 1], [2, 1], [2, 1], [2, 1], [2, 1], [2, 1], [2, 1], [2, 1]], \
+        [[5, 1], [4, 1], [3, 1], [6, 1], [1, 1], [3, 1], [4, 1], [5, 1]]]
+
+    print(type(chess_board2))
     #  (type_of_piece, Enemy/Ally)
     """
     The King == 1
