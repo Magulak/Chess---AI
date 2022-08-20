@@ -1,7 +1,4 @@
-# Zamiast 5 zmiennych może klasa :)?
-# zmiana w kodzie
 #  Use numpy for loops on arrays (this should be wayyyyyyyy faster)
-#  (type_of_piece)
 # dictionary is 6 times faster than list
 class Chess:
     class Pawn:        
