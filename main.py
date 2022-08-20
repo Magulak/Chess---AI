@@ -6,10 +6,9 @@ class Chess:
     class Pawn:
         print("Class for pawns")
 
-        def moveset(self, y, x):
-            if chess_board2[y, x] == [2, 2]:
-
-
+        def moveset(self, y, x, board):
+            if board[y][x] == [2, 2]:
+                print("test")
 
     class Knight:
         print("Class for knights")
@@ -22,7 +21,6 @@ class Chess:
 
     class Bishop:
         print("Class for bishops")
-
 
     class Rook:
         print("Class for rooks")
@@ -51,9 +49,6 @@ class Chess:
               " \n - Selected piece have move_set that allows him to move there"
               " \n - No checkmate")
 
-
-
-
     chess_board2 = [
         [[5, 2], [4, 2], [3, 2], [1, 2], [6, 2], [3, 2], [4, 2], [5, 2]],  # y0
         [[2, 2], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2]],  # y1
@@ -65,6 +60,7 @@ class Chess:
         [[5, 1], [4, 1], [3, 1], [6, 1], [1, 1], [3, 1], [4, 1], [5, 1]]]  # y7
     #     x0       x1       x2     x3      x4       x5      x6      x7
 
+    Pawn.moveset(1, 2, 3, chess_board2)
     """
     chess_board[y] [x] [data]
     """
