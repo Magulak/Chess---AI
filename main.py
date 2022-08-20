@@ -6,8 +6,12 @@ class Chess:
     class Pawn:
         print("Class for pawns")
 
-        def moveset(self, y, x):
-            if chess_board2[y, x] == [2, 2]:
+        def moveset(self, y, x, chess_board2):
+           if chess_board2[y][x] == [2, 2]:
+               print("czarny")
+               chess_board2[y][x] = [7, 7]
+               return chess_board2
+
 
 
 
@@ -64,6 +68,12 @@ class Chess:
         [[2, 1], [2, 1], [2, 1], [2, 1], [2, 1], [2, 1], [2, 1], [2, 1]],  # y6
         [[5, 1], [4, 1], [3, 1], [6, 1], [1, 1], [3, 1], [4, 1], [5, 1]]]  # y7
     #     x0       x1       x2     x3      x4       x5      x6      x7
+
+    chess_board2 = Pawn.moveset(1, 1, 2, chess_board2)
+
+    for x in range(len(chess_board2)):
+         print(chess_board2[x])
+
 
     """
     chess_board[y] [x] [data]
