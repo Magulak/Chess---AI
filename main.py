@@ -1,12 +1,20 @@
-#  Use numpy for loops on arrays (this should be wayyyyyyyy faster)
+#  Check if we can use Numpy for loops
 
 class Chess:
-    class Pawn:        
-    def moveset(self, y, x, chess_board2):
-           if chess_board2[y][x] == [2, 2]:
-               print("czarny")
-               chess_board2[y][x] = [7, 7]
-               return chess_board2
+    class Piece():
+
+        def __init__(self, type_of_piece, coordinates): # constructor
+            print(coordinates)
+            self.ptype = type_of_piece
+            self.y, self.x = coordinates
+            print("class starts here")
+
+    class Pawn:
+        def moveset(self, y, x, chess_board2):
+            if chess_board2[y][x] == [2, 2]:
+                print("czarny")
+                chess_board2[y][x] = [7, 7]
+                return chess_board2
 
     class Knight:
         print("Class for knights")
@@ -57,11 +65,28 @@ class Chess:
         [[2, 1], [2, 1], [2, 1], [2, 1], [2, 1], [2, 1], [2, 1], [2, 1]],  # y6
         [[5, 1], [4, 1], [3, 1], [6, 1], [1, 1], [3, 1], [4, 1], [5, 1]]]  # y7
     #     x0       x1       x2     x3      x4       x5      x6      x7
-    
-    chess_board2 = Pawn.moveset(1, 1, 2, chess_board2)
 
+# We can change our y from numbera to letters. Now reading standard chess files might 
+# be easier 
+a, b, c, d, e, f, g, h = 7, 6, 5, 4, 3, 2, 1, 0
+
+
+
+    chess_board2 = Pawn.moveset(1, 1, 2, chess_board2)
     for x in range(len(chess_board2)):
          print(chess_board2[x])
+    # pawn = Piece("Pawn")
+    # knight = Piece("Knight")
+    # king = Piece("king")
+    # queen = Piece("queen")
+    # bishop = Piece("bishop")
+
+    piece_coordinates = chess_board2[0][0]
+    rook = Piece("rook", piece_coordinates)
+    print(rook.x)
+    print(rook.y)
+    print(rook.ptype)
+
 
     """
     chess_board[y] [x] [data]
