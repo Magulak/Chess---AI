@@ -1,59 +1,155 @@
-#  Check if we can use Numpy for loops
+"""
+from enum import Enum
+
+class Season(Enum):
+    SPRING = 1
+    SUMMER = 2
+    AUTUMN = 3
+    WINTER = 4
+
+# printing enum member as string
+print(Season.SPRING)
+
+# printing name of enum member using "name" keyword
+print(Season.SPRING.name)
+
+# printing value of enum member using "value" keyword
+print(Season.SPRING.value)
+
+# printing the type of enum member using type()
+print(type(Season.SPRING))
+
+# printing enum member as repr
+print(repr(Season.SPRING))
+
+# printing all enum member using "list" keyword
+print(list(Season))"""
+import pygame
+
+pygame.init()
+
+# set color with rgb
+white, black, red = (255, 255, 255), (0, 0, 0), (255, 0, 0)
+
+# set display
+gameDisplay = pygame.display.set_mode((1280, 780))
+
+# Size of squares
+size = 20
+
+# Board length, must be even
+boardLength = 8
+gameDisplay.fill(white)
+
+cnt = 0
+for i in range(1, boardLength + 1):
+    for z in range(1, boardLength + 1):
+        # check if current loop value is even
+        if cnt % 2 == 0:
+            pygame.draw.rect(gameDisplay, white, [size * z, size * i, size, size])
+        else:
+            pygame.draw.rect(gameDisplay, black, [size * z, size * i, size, size])
+        cnt += 1
+    # since theres an even number of squares go back one value
+    cnt -= 1
+# Add a nice boarder
+pygame.draw.rect(gameDisplay, black, [size, size, boardLength * size, boardLength * size], 1)
+
+pygame.display.update()
+
 
 class Chess:
     class Piece():
 
-        def __init__(self, type_of_piece, coordinates): # constructor
+        def __init__(self, type_of_piece, coordinates):  # constructor
             print(coordinates)
             self.ptype = type_of_piece
             self.y, self.x = coordinates
             print("class starts here")
 
     class Pawn:
-        def moveset(self, y, x, chess_board2):
-            if chess_board2[y][x] == [2, 2]:
-                print("czarny")
-                chess_board2[y][x] = [7, 7]
-                return chess_board2
+        def moveset(self, y, x, fx, fy, chess_board):
+            print(chess_board[fy][fx])
+            chess_board[fy][fx] = chess_board[x][y]
+
+            print(chess_board[fy][fx])
+            chess_board[y][x] = [0, 0]
+            print("\n")
+            if chess_board[y][x][1] != 0 and chess_board[y][x][1] != chess_board[fy][fx][1]:
+                print("ENEMY ATTACKED")
+            for a in range(len(chess_board)):
+                print(chess_board[a])
+            return chess_board
 
     class Knight:
-        print("Class for knights")
+        def moveset(self, y, x, fx, fy, chess_board):
+            print(chess_board[fy][fx])
+            chess_board[fy][fx] = chess_board[x][y]
+
+            print(chess_board[fy][fx])
+            chess_board[y][x] = [0, 0]
+            print("\n")
+            if chess_board[y][x][1] != 0 and chess_board[y][x][1] != chess_board[fy][fx][1]:
+                print("ENEMY ATTACKED")
+            for a in range(len(chess_board)):
+                print(chess_board[a])
+            return chess_board
 
     class King:
-        print("Class for kings")
+        def moveset(self, y, x, fx, fy, chess_board):
+            print(chess_board[fy][fx])
+            chess_board[fy][fx] = chess_board[x][y]
+
+            print(chess_board[fy][fx])
+            chess_board[y][x] = [0, 0]
+            print("\n")
+            if chess_board[y][x][1] != 0 and chess_board[y][x][1] != chess_board[fy][fx][1]:
+                print("ENEMY ATTACKED")
+            for a in range(len(chess_board)):
+                print(chess_board[a])
+            return chess_board
 
     class Queen:
-        print("Class for queens")
+        def moveset(self, y, x, fx, fy, chess_board):
+            print(chess_board[fy][fx])
+            chess_board[fy][fx] = chess_board[x][y]
+
+            print(chess_board[fy][fx])
+            chess_board[y][x] = [0, 0]
+            print("\n")
+            if chess_board[y][x][1] != 0 and chess_board[y][x][1] != chess_board[fy][fx][1]:
+                print("ENEMY ATTACKED")
+            for a in range(len(chess_board)):
+                print(chess_board[a])
+            return chess_board
 
     class Bishop:
-        print("Class for bishops")
+        def moveset(self, y, x, fx, fy, chess_board):
+            print(chess_board[fy][fx])
+            chess_board[fy][fx] = chess_board[x][y]
+
+            print(chess_board[fy][fx])
+            chess_board[y][x] = [0, 0]
+            print("\n")
+            if chess_board[y][x][1] != 0 and chess_board[y][x][1] != chess_board[fy][fx][1]:
+                print("ENEMY ATTACKED")
+            for a in range(len(chess_board)):
+                print(chess_board[a])
+            return chess_board
 
     class Rook:
-        print("Class for rooks")
+        def moveset(self, y, x, fx, fy, chess_board):
+            print(chess_board[fy][fx])
+            chess_board[fy][fx] = chess_board[x][y]
 
-    def move(self, board, x1, y1, x2, y2):
-        """
-        :param board: -  chess_board
-        :param x1: - x coordinate of chess_piece that will be moved
-        :param y1: - y coordinate of chess_piece that will be moved
-        :param x2: - x coordinate of desired place
-        :param y2: - y coordinate of desired place
-        :return: return change chess_board to state after the move / deny if move is illegal
-        """
-
-        """  
-        bishop movement is going to be represented by bishopmovement.png
-        """
-
-        def attack(self):
-            print("attack")
-
-        # If friendly piece encounters enemy piece on its move, the enemy piece gets destroyed
-
-        print("if:"
-              " \n - Desired spot is empty"
-              " \n - Selected piece have move_set that allows him to move there"
-              " \n - No checkmate")
+            print(chess_board[fy][fx])
+            chess_board[y][x] = [0, 0]
+            print("\n")
+            if chess_board[y][x][1] != 0 and chess_board[y][x][1] != chess_board[fy][fx][1]:
+                print("ENEMY ATTACKED")
+            for a in range(len(chess_board)):
+                print(chess_board[a])
+            return chess_board
 
     chess_board2 = [
         [[5, 2], [4, 2], [3, 2], [1, 2], [6, 2], [3, 2], [4, 2], [5, 2]],  # y0
@@ -91,7 +187,6 @@ a, b, c, d, e, f, g, h = 7, 6, 5, 4, 3, 2, 1, 0
     """
     chess_board[y] [x] [data]
     """
-
     """
     type_of_piece, Enemy/Ally)
     The King == 1
@@ -100,8 +195,57 @@ a, b, c, d, e, f, g, h = 7, 6, 5, 4, 3, 2, 1, 0
     The Knight == 4
     The Rook == 5
     The Queen == 6
-    
+
     (0 , 0) == empty
     (x , 1) == white
     (x , 2) == black
     """
+
+    for x in range(len(chess_board2)):
+        print(chess_board2[x])
+    turn = 1
+    while True:
+
+        if turn % 2 == 1:
+            print("White's turn")
+        else:
+            print("Black's turn")
+        turn += turn
+
+        print("Current position: ")
+        print(f"x = ")
+        x = input()  # x == string
+        x = int(x)  # now x == int   (we need to find better way to do that)
+        print(f"y = ")
+        y = input()
+        y = int(y)
+
+        print("Future position: ")
+        print(f"x = ")
+        fx = input()
+        fx = int(fx)
+        print(f"y = ")
+        fy = input()
+        fy = int(fy)
+
+        if chess_board2[y][x][0] == 0:
+            print("EMPTY")
+            print("King")
+            chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
+        if chess_board2[y][x][0] == 2:
+            print("Pawn")
+            chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
+        if chess_board2[y][x][0] == 3:
+            print("Bishop")
+            chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
+        if chess_board2[y][x][0] == 4:
+            print("Knight")
+            chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
+        if chess_board2[y][x][0] == 5:
+            print("Rook")
+            chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
+        if chess_board2[y][x][0] == 6:
+            print("Queen")
+            chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
+
+        # if clicked button == ` then break:
