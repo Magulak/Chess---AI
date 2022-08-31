@@ -24,6 +24,8 @@ print(repr(Season.SPRING))
 
 # printing all enum member using "list" keyword
 print(list(Season))"""
+
+# Comment
 import pygame
 
 pygame.init()
