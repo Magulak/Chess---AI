@@ -46,7 +46,8 @@ if ui:
 
     piece = pygame.image.load("piece.png")
     board = pygame.image.load("Chess_Board.png")
-
+    pygame.display.set_caption('Quick Start')
+    
     piece_rect = piece.get_rect()
     board_rect = board.get_rect()
 
