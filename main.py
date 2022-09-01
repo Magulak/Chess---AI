@@ -38,16 +38,16 @@ if ui:
     square_size = 40
     speed = [1, 1]
     black = 0, 0, 0
-    white = 255,255,255
+    white = 255, 255, 255
 
     gameDisplay = pygame.display.set_mode(size)
     boardLength = 8
     gameDisplay.fill(white)
 
     piece = pygame.image.load("piece.png")
-    board = pygame.image.load("Chess_Board.png")
+    board = pygame.image.load("Chess_Board.jpg")
     pygame.display.set_caption('Quick Start')
-    
+
     piece_rect = piece.get_rect()
     board_rect = board.get_rect()
 
@@ -65,8 +65,6 @@ if ui:
         gameDisplay.blit(piece, piece_rect)
         gameDisplay.blit(board, board_rect)
         pygame.display.flip()
-
-
 
 
 #
