@@ -27,37 +27,80 @@ print(list(Season))"""
 
 # Comment
 import pygame
+import sys
 
-pygame.init()
+ui = True
 
-# set color with rgb
-white, black, red = (255, 255, 255), (0, 0, 0), (255, 0, 0)
+if ui:
+    pygame.init()
 
-# set display
-gameDisplay = pygame.display.set_mode((1280, 780))
+    size = width, height = 1320, 1240
+    square_size = 40
+    speed = [1, 1]
+    black = 0, 0, 0
+    white = 255,255,255
 
-# Size of squares
-size = 20
+    gameDisplay = pygame.display.set_mode(size)
+    boardLength = 8
+    gameDisplay.fill(white)
 
-# Board length, must be even
-boardLength = 8
-gameDisplay.fill(white)
+    piece = pygame.image.load("piece.png")
+    board = pygame.image.load("Chess_Board.png")
 
-cnt = 0
-for i in range(1, boardLength + 1):
-    for z in range(1, boardLength + 1):
-        # check if current loop value is even
-        if cnt % 2 == 0:
-            pygame.draw.rect(gameDisplay, white, [size * z, size * i, size, size])
-        else:
-            pygame.draw.rect(gameDisplay, black, [size * z, size * i, size, size])
-        cnt += 1
-    # since theres an even number of squares go back one value
-    cnt -= 1
-# Add a nice boarder
-pygame.draw.rect(gameDisplay, black, [size, size, boardLength * size, boardLength * size], 1)
+    piece_rect = piece.get_rect()
+    board_rect = board.get_rect()
 
-pygame.display.update()
+    while 1:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: sys.exit()
+
+        piece_rect = piece_rect.move(speed)
+        if piece_rect.left < 0 or piece_rect.right > width:
+            speed[0] = -speed[0]
+        if piece_rect.top < 0 or piece_rect.bottom > height:
+            speed[1] = -speed[1]
+
+        gameDisplay.fill(black)
+        gameDisplay.blit(piece, piece_rect)
+        gameDisplay.blit(board, board_rect)
+        pygame.display.flip()
+
+
+
+
+#
+#
+# for event in pygame.event.get():
+#     if event.type == pygame.QUIT: sys.exit()
+#
+# # set color with rgb
+# white, black, red = (255, 255, 255), (0, 0, 0), (255, 0, 0)
+#
+# # set display
+# gameDisplay = pygame.display.set_mode((1920, 980))
+#
+# # Size of squares
+# size = 20
+#
+# # Board length, must be even
+# boardLength = 8
+# gameDisplay.fill(white)
+#
+# cnt = 0
+# for i in range(1, boardLength + 1):
+#     for z in range(1, boardLength + 1):
+#         # check if current loop value is even
+#         if cnt % 2 == 0:
+#             pygame.draw.rect(gameDisplay, white, [size * z, size * i, size, size])
+#         else:
+#             pygame.draw.rect(gameDisplay, black, [size * z, size * i, size, size])
+#         cnt += 1
+#     # since theres an even number of squares go back one value
+#     cnt -= 1
+# # Add a nice boarder
+# pygame.draw.rect(gameDisplay, black, [size, size, boardLength * size, boardLength * size], 1)
+#
+# pygame.display.update()
 
 
 class Chess:
@@ -164,15 +207,9 @@ class Chess:
         [[5, 1], [4, 1], [3, 1], [6, 1], [1, 1], [3, 1], [4, 1], [5, 1]]]  # y7
     #     x0       x1       x2     x3      x4       x5      x6      x7
 
-# We can change our y from numbera to letters. Now reading standard chess files might 
-# be easier 
-a, b, c, d, e, f, g, h = 7, 6, 5, 4, 3, 2, 1, 0
-
-
-
-    chess_board2 = Pawn.moveset(1, 1, 2, chess_board2)
+    chess_board2 = Pawn.moveset(0, 1, 1, 5, 0, chess_board2)
     for x in range(len(chess_board2)):
-         print(chess_board2[x])
+        print(chess_board2[x])
     # pawn = Piece("Pawn")
     # knight = Piece("Knight")
     # king = Piece("king")
@@ -184,7 +221,6 @@ a, b, c, d, e, f, g, h = 7, 6, 5, 4, 3, 2, 1, 0
     print(rook.x)
     print(rook.y)
     print(rook.ptype)
-
 
     """
     chess_board[y] [x] [data]
