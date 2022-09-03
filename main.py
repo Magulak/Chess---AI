@@ -165,68 +165,75 @@ class Chess:
     (x , 1) == white
     (x , 2) == black
     """
+    #
+    # for x in range(len(chess_board2)):
+    #     print(chess_board2[x])
+    # turn = 1
+    # # while True:
+    # #
+    # #     if turn % 2 == 1:
+    # #         print("White's turn")
+    # #     else:
+    # #         print("Black's turn")
+    # #     turn += turn
+    # #
+    # #     print("Current position: ")
+    # #     print(f"x = ")
+    # #     x = input()  # x == string
+    # #     x = int(x)  # now x == int   (we need to find better way to do that)
+    # #     print(f"y = ")
+    # #     y = input()
+    # #     y = int(y)
+    # #
+    # #     print("Future position: ")
+    # #     print(f"x = ")
+    # #     fx = input()
+    # #     fx = int(fx)
+    # #     print(f"y = ")
+    # #     fy = input()
+    # #     fy = int(fy)
+    # #
+    # #     if chess_board2[y][x][0] == 0:
+    # #         print("EMPTY")
+    # #         print("King")
+    # #         chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
+    # #     if chess_board2[y][x][0] == 2:
+    # #         print("Pawn")
+    # #         chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
+    # #     if chess_board2[y][x][0] == 3:
+    # #         print("Bishop")
+    # #         chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
+    # #     if chess_board2[y][x][0] == 4:
+    # #         print("Knight")
+    # #         chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
+    # #     if chess_board2[y][x][0] == 5:
+    # #         print("Rook")
+    # #         chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
+    # #     if chess_board2[y][x][0] == 6:
+    # #         print("Queen")
+    # #         chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
 
-    for x in range(len(chess_board2)):
-        print(chess_board2[x])
-    turn = 1
-    while True:
+    # TODO if clicked button == ` then break:
+    pygame.init()
 
-        if turn % 2 == 1:
-            print("White's turn")
-        else:
-            print("Black's turn")
-        turn += turn
+    square_size = width, height = 1320, 1240
+    white, black, red = (255, 255, 255), (0, 0, 0), (255, 0, 0)
 
-        print("Current position: ")
-        print(f"x = ")
-        x = input()  # x == string
-        x = int(x)  # now x == int   (we need to find better way to do that)
-        print(f"y = ")
-        y = input()
-        y = int(y)
+    chess_board_display = pygame.display.set_mode(square_size)
 
-        print("Future position: ")
-        print(f"x = ")
-        fx = input()
-        fx = int(fx)
-        print(f"y = ")
-        fy = input()
-        fy = int(fy)
+    chess_board_display.fill(white)
+    pygame.display.set_caption('Chess--AI')
 
-        if chess_board2[y][x][0] == 0:
-            print("EMPTY")
-            print("King")
-            chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
-        if chess_board2[y][x][0] == 2:
-            print("Pawn")
-            chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
-        if chess_board2[y][x][0] == 3:
-            print("Bishop")
-            chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
-        if chess_board2[y][x][0] == 4:
-            print("Knight")
-            chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
-        if chess_board2[y][x][0] == 5:
-            print("Rook")
-            chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
-        if chess_board2[y][x][0] == 6:
-            print("Queen")
-            chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
+    object_width = 20
+    object_height = 20
+    board = pygame.image.load("Chess_Board.jpg")
+    board_rect = board.get_rect()
+    while 1:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: sys.exit()
+        chess_board_display.fill(white)
 
-        # TODO if clicked button == ` then break:
-        pygame.init()
+        pygame.draw.rect(chess_board_display, (20, 20, 20), (500, 200, object_width, object_height))
 
-        square_size = width, height = 1320, 1240
-        white, black, red = (255, 255, 255), (0, 0, 0), (255, 0, 0)
-
-        gameDisplay = pygame.display.set_mode(square_size)
-
-        gameDisplay.fill(white)
-        pygame.display.set_caption('Chess--AI')
-
-        while 1:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT: sys.exit()
-            gameDisplay.fill(white)
-
-            pygame.display.update()  # TODO give it correct parameters.
+        # pygame.display.update()  # TODO give it correct parameters.
+        chess_board_display.blit(board, board_rect)
