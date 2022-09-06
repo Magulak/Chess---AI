@@ -228,9 +228,15 @@ class Chess:
     object_height = 20
     board = pygame.image.load("Chess_Board.jpg")
     board_rect = board.get_rect()
-    while 1:
+    crashed = False
+
+    while not crashed:
+
         for event in pygame.event.get():
-            if event.type == pygame.QUIT: sys.exit()
+
+
+        pygame.display.update()
+        clock.tick(60)
         chess_board_display.fill(white)
 
         pygame.draw.rect(chess_board_display, (20, 20, 20), (500, 200, object_width, object_height))
