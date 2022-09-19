@@ -68,3 +68,8 @@ ____________________________________
 a co jeżeli nie będzie dało się przenieść mojej tablicy [True] [False] na interface graficzny?
 
 trzeba sprawdzić*
+
+
+____________________________________
+
+Myślę, że użyjemy uczenia maszynowego pod nadzorem, ale to pod jakim konkretnie nadzorem to trzeba popatrzeć na czyjeś projekty, jest to pierwszy średni/mały projekt więc nie rozwijałbym za bardzo analizy AI, tylko postrał się jak najszybciej osiągnąć działający produkt, a następnie jeżeli wciąż będzie motywacja, to go rozwijać.
