@@ -27,7 +27,7 @@ print(list(Season))"""
 
 # I'm not sure if it is possible to call a class name with enum (needs checking)
 
-# Comment
+
 import pygame
 import sys
 
