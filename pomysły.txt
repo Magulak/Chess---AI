@@ -78,3 +78,17 @@ __________________________________________________________________________
 
 Plan: Skrócić maksymalnie czas, w którym otrzymamy pierwszy prototyp szachów (bez AI).
 Dzięki temu będziemy w stanie szybciej zobaczyć jakie napotkamy problemy, oraz usuwanie kodu nie będzie bolesne.
+
+
+Obecny plan który wydaje mi się, że może mieć sens:
+
+1. Szachy które da się przemieszczać po planszy w jakiś sposób (DONE)
+2. Wprowadzić ograniczenia ruchu (ale tylko dla np: Królowa, Król, Pionki) ( IN PROGRESS )
+3. Interface graficzny który wyświetla pozycję pionków (IN PROGRESS )
+4. Pionki w intejsie graficznym powinny mieć funkcję drag and drop ! Oraz po zrobieniu drag and drop tablica z szachownicą powinna się zaktualizować 
+5. Powinno rozróżniać graczów, oraz tylko gracz którego jest teraz tura może ruszać tylko SWOJE pionki
+6. Sprawdzić jak będzie wyglądać integracja z AI
+7. Poprawić rzeczy które uniemozliwiają integrację z AI
+8. Dokończyć szachy oraz interface graficzny
+9. Integracja z AI
+10. Optymalizacja. 
