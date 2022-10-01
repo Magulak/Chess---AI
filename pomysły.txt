@@ -73,3 +73,8 @@ trzeba sprawdzić*
 ____________________________________
 
 Myślę, że użyjemy uczenia maszynowego pod nadzorem, ale to pod jakim konkretnie nadzorem to trzeba popatrzeć na czyjeś projekty, jest to pierwszy średni/mały projekt więc nie rozwijałbym za bardzo analizy AI, tylko postrał się jak najszybciej osiągnąć działający produkt, a następnie jeżeli wciąż będzie motywacja, to go rozwijać.
+
+__________________________________________________________________________
+
+Plan: Skrócić maksymalnie czas, w którym otrzymamy pierwszy prototyp szachów (bez AI).
+Dzięki temu będziemy w stanie szybciej zobaczyć jakie napotkamy problemy, oraz usówanie kodu nie będzie bolesne.
