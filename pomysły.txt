@@ -77,4 +77,4 @@ Myślę, że użyjemy uczenia maszynowego pod nadzorem, ale to pod jakim konkret
 __________________________________________________________________________
 
 Plan: Skrócić maksymalnie czas, w którym otrzymamy pierwszy prototyp szachów (bez AI).
-Dzięki temu będziemy w stanie szybciej zobaczyć jakie napotkamy problemy, oraz usówanie kodu nie będzie bolesne.
+Dzięki temu będziemy w stanie szybciej zobaczyć jakie napotkamy problemy, oraz usuwanie kodu nie będzie bolesne.
