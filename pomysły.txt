@@ -92,3 +92,9 @@ Obecny plan który wydaje mi się, że może mieć sens:
 8. Dokończyć szachy oraz interface graficzny
 9. Integracja z AI
 10. Optymalizacja. 
+
+
+
+_____________________
+Code structure:
+exploratory, just try new things and when you decide that you want to build code "this way:" then convert your project into that code structure
