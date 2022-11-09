@@ -105,3 +105,8 @@ exploratory, just try new things and when you decide that you want to build code
 ______________________________________
 
 I suggest using simple machine learning. Let's leave neural network for later projects
+
+
+_______________________
+
+Use drag and drop for gui. https://pypi.org/project/PySimpleGUIQt/ (this offers drag and drop) https://www.reddit.com/r/PySimpleGUI/comments/gp7gaj/drag_and_drop/
