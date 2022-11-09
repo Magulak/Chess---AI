@@ -110,3 +110,7 @@ I suggest using simple machine learning. Let's leave neural network for later pr
 _______________________
 
 Use drag and drop for gui. https://pypi.org/project/PySimpleGUIQt/ (this offers drag and drop) https://www.reddit.com/r/PySimpleGUI/comments/gp7gaj/drag_and_drop/
+
+__________________
+
+https://github.com/PySimpleGUI/PySimpleGUI/issues/732
