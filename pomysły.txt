@@ -121,3 +121,8 @@ ____________________
 https://pysimplegui.trinket.io/demo-programs#/graph-element/graph-element-drawing-and-dragging
 
 !!!!!!!
+
+____________________
+
+
+We will use CNN architecture + RL (Reinforced learning)
