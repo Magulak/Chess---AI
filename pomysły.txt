@@ -126,3 +126,10 @@ ____________________
 
 
 We will use CNN architecture + RL (Reinforced learning)
+
+
+_____
+
+Evaluating the quality of a chess position :
+
+Material evaluation: This approach evaluates the position based on the relative value of the pieces on the board. The value of each piece is assigned a fixed value, and the evaluation function simply adds up the values of the pieces to get a total score.
