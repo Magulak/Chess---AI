@@ -133,3 +133,62 @@ _____
 Evaluating the quality of a chess position :
 
 Material evaluation: This approach evaluates the position based on the relative value of the pieces on the board. The value of each piece is assigned a fixed value, and the evaluation function simply adds up the values of the pieces to get a total score.
+
+____
+
+
+import pygame
+
+# Initialize pygame
+pygame.init()
+
+# Set the window size
+window_size = (800, 800)
+
+# Create the window
+screen = pygame.display.set_mode(window_size)
+
+# Set the title of the window
+pygame.display.set_caption("Chess AI")
+
+# Load the chess pieces images
+white_pawn_image = pygame.image.load("white_pawn.png")
+black_pawn_image = pygame.image.load("black_pawn.png")
+white_rook_image = pygame.image.load("white_rook.png")
+black_rook_image = pygame.image.load("black_rook.png")
+
+# Create a 2D list to represent the chessboard
+chessboard = [[white_rook_image, white_pawn_image, None, None, None, None, black_pawn_image, black_rook_image],
+              [None, None, None, None, None, None, None, None],
+              [None, None, None, None, None, None, None, None],
+              [None, None, None, None, None, None, None, None],
+              [None, None, None, None, None, None, None, None],
+              [None, None, None, None, None, None, None, None],
+              [None, None, None, None, None, None, None, None],
+              [None, None, None, None, None, None, None, None]]
+
+# Main game loop
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+    
+    # Draw the chessboard
+    for i in range(8):
+        for j in range(8):
+            if (i+j) % 2 == 0:
+                color = (255, 255, 255)
+            else:
+                color = (0, 0, 0)
+            pygame.draw.rect(screen, color, (i*100, j*100, 100, 100))
+            
+            # Draw the pieces on the chessboard
+            if chessboard[i][j] is not None:
+                screen.blit(chessboard[i][j], (i*100, j*100))
+    
+    # Update the screen
+    pygame.display.flip()
+
+# Quit pygame
+pygame.quit()
