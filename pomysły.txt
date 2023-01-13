@@ -192,3 +192,65 @@ while running:
 
 # Quit pygame
 pygame.quit()
+
+________________________
+
+import pygame
+
+# Initialize Pygame
+pygame.init()
+
+# Set the size of the window
+size = (720, 720)
+screen = pygame.display.set_mode(size)
+
+# Create two lists to represent the chess board
+color_board = [[1, 1, 1, 1, 1, 1, 1, 1],
+               [1, 1, 1, 1, 1, 1, 1, 1],
+               [0, 0, 0, 0, 0, 0, 0, 0],
+               [0, 0, 0, 0, 0, 0, 0, 0],
+               [0, 0, 0, 0, 0, 0, 0, 0],
+               [0, 0, 0, 0, 0, 0, 0, 0],
+               [2, 2, 2, 2, 2, 2, 2, 2],
+               [2, 2, 2, 2, 2, 2, 2, 2]]
+               
+type_board = [[1, 2, 3, 4, 5, 6, 2, 1],
+              [7, 7, 7, 7, 7, 7, 7, 7],
+              [0, 0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, 0, 0, 0],
+              [7, 7, 7, 7, 7, 7, 7, 7],
+              [1, 2, 3, 4, 5, 6, 2, 1]]
+
+# Create a dictionary to map the numbers in the type board to the corresponding chess piece images
+piece_images = {0: None, 1: white_rook_image, 2: white_knight_image, 3: white_bishop_image,
+                4: white_queen_image, 5: white_king_image, 6: white_pawn_image,
+                7: black_pawn_image, 8: black_knight_image, 9: black_bishop_image,
+                10: black_rook_image, 11: black_queen_image, 12: black_king_image}
+
+# Main game loop
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    # Draw the chess board
+    for row in range(8):
+        for col in range(8):
+            piece_color = color_board[row][col]
+            piece_type = type_board[row][col]
+            piece_image = piece_images[piece_type]
+
+            if piece_color == 1:
+                color = (255, 255, 255)
+            elif piece_color == 2:
+                color = (0, 0, 0)
+            else:
+                color = (200, 200, 200)
+
+            pygame.draw.rect(screen, color, (col
+            
+            
+            (NEEDS MORE WORK)
