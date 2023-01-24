@@ -123,7 +123,7 @@ type_board = [[1, 2, 3, 4, 5, 6, 2, 1],
   
   GUI IDEAS SUMMARISATION:
  - Focus on just writing chess, optimalisation will come later.
- - Modularization/ [GUI] [Game logic] [AI] [Image database]
+ - Modularization/ [GUI] [Game logic (all pieces rules)] [Game logic (specific chess type rules) [AI] [Image database]
  - Apply Drag and drop for chess pieces
  - Create class / method that will corelate Virtual board with pygame drawn board.
  
