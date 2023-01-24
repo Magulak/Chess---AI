@@ -81,8 +81,6 @@ Obecny plan który wydaje mi się, że może mieć sens:
 9. Integracja z AI
 10. Optymalizacja. 
 
-
-
 _____________________
 Code structure:
 exploratory, just try new things and when you decide that you want to build code "this way:" then convert your project into that code structure
@@ -95,8 +93,6 @@ ____________________
 
 
 We will use CNN architecture + RL (Reinforced learning)
-
-
 _____
 
 Evaluating the quality of a chess position :
@@ -106,74 +102,6 @@ Material evaluation: This approach evaluates the position based on the relative 
 ____
 
 
-import pygame
-
-# Initialize pygame
-pygame.init()
-
-# Set the window size
-window_size = (800, 800)
-
-# Create the window
-screen = pygame.display.set_mode(window_size)
-
-# Set the title of the window
-pygame.display.set_caption("Chess AI")
-
-# Load the chess pieces images
-white_pawn_image = pygame.image.load("white_pawn.png")
-black_pawn_image = pygame.image.load("black_pawn.png")
-white_rook_image = pygame.image.load("white_rook.png")
-black_rook_image = pygame.image.load("black_rook.png")
-
-# Create a 2D list to represent the chessboard
-chessboard = [[white_rook_image, white_pawn_image, None, None, None, None, black_pawn_image, black_rook_image],
-              [None, None, None, None, None, None, None, None],
-              [None, None, None, None, None, None, None, None],
-              [None, None, None, None, None, None, None, None],
-              [None, None, None, None, None, None, None, None],
-              [None, None, None, None, None, None, None, None],
-              [None, None, None, None, None, None, None, None],
-              [None, None, None, None, None, None, None, None]]
-
-# Main game loop
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-    
-    # Draw the chessboard
-    for i in range(8):
-        for j in range(8):
-            if (i+j) % 2 == 0:
-                color = (255, 255, 255)
-            else:
-                color = (0, 0, 0)
-            pygame.draw.rect(screen, color, (i*100, j*100, 100, 100))
-            
-            # Draw the pieces on the chessboard
-            if chessboard[i][j] is not None:
-                screen.blit(chessboard[i][j], (i*100, j*100))
-    
-    # Update the screen
-    pygame.display.flip()
-
-# Quit pygame
-pygame.quit()
-
-________________________
-
-import pygame
-
-# Initialize Pygame
-pygame.init()
-
-# Set the size of the window
-size = (720, 720)
-screen = pygame.display.set_mode(size)
-
-# Create two lists to represent the chess board
 color_board = [[1, 1, 1, 1, 1, 1, 1, 1],
                [1, 1, 1, 1, 1, 1, 1, 1],
                [0, 0, 0, 0, 0, 0, 0, 0],
@@ -190,45 +118,16 @@ type_board = [[1, 2, 3, 4, 5, 6, 2, 1],
               [0, 0, 0, 0, 0, 0, 0, 0],
               [0, 0, 0, 0, 0, 0, 0, 0],
               [7, 7, 7, 7, 7, 7, 7, 7],
-              [1, 2, 3, 4, 5, 6, 2, 1]]
-
-# Create a dictionary to map the numbers in the type board to the corresponding chess piece images
-piece_images = {0: None, 1: white_rook_image, 2: white_knight_image, 3: white_bishop_image,
-                4: white_queen_image, 5: white_king_image, 6: white_pawn_image,
-                7: black_pawn_image, 8: black_knight_image, 9: black_bishop_image,
-                10: black_rook_image, 11: black_queen_image, 12: black_king_image}
-
-# Main game loop
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-    # Draw the chess board
-    for row in range(8):
-        for col in range(8):
-            piece_color = color_board[row][col]
-            piece_type = type_board[row][col]
-            piece_image = piece_images[piece_type]
-
-            if piece_color == 1:
-                color = (255, 255, 255)
-            elif piece_color == 2:
-                color = (0, 0, 0)
-            else:
-                color = (200, 200, 200)
-
-            pygame.draw.rect(screen, color, (col
-            
-            
-            (NEEDS MORE WORK)
-            
-            
-            
+              [1, 2, 3, 4, 5, 6, 2, 1]]         
   _________________________________________
   
   GUI IDEAS SUMMARISATION:
+ - Modularization/ [GUI] [Game logic] [AI] [Image database]
  - Apply Drag and drop for chess pieces
  - Create class / method that will corelate Virtual board with pygame drawn board.
+ 
+ ________________________________
+ 
+ Maybe each piece should send information about its position????? Stupid idea?
+ 
  
