@@ -1,7 +1,7 @@
 import pygame
 
 size = (700, 700)
-rectangle_draging = False
+piece_draging = False
 
 pygame.init()
 
@@ -11,7 +11,17 @@ pygame.display.set_caption("Chess Board")
 
 # Load image
 image = pygame.image.load('Piece.png').convert()
-rect = image.get_rect()
+piece = image.get_rect()
+collidelist = []
+
+x = 0
+while x <= 7:
+    exec(f"piece{x} = piece.copy()")
+    exec(f"collidelist.append(piece{x})")
+    x = x + 1
+for i, value in enumerate(collidelist):
+    print(f"Index: {i}, Value: {value}")
+
 # rect.center = (200, 300)
 
 # Define the colors & fps
@@ -30,25 +40,26 @@ while running:
 
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
-                if rect.collidepoint(event.pos):
-                    rectangle_draging = True
-                    mouse_x, mouse_y = event.pos
-                    offset_x = rect.x - mouse_x
-                    offset_y = rect.y - mouse_y
+                for piece in collidelist:  # Multiple object collision
+                    if piece.collidepoint(event.pos):
+                        piece_draging = True
+                        mouse_x, mouse_y = event.pos
+                        offset_x = piece.x - mouse_x
+                        offset_y = piece.y - mouse_y
 
         elif event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1:
-                rectangle_draging = False
+                piece_draging = False
 
         elif event.type == pygame.MOUSEMOTION:
-            if rectangle_draging:
+            if piece_draging:
                 mouse_x, mouse_y = event.pos
-                rect.x = mouse_x + offset_x
-                rect.y = mouse_y + offset_y
+                piece.x = mouse_x + offset_x
+                piece.y = mouse_y + offset_y
 
     # Fill the screen with white
-    screen.fill(white)
-    pygame.draw.rect(screen, white, rect)
+    # screen.fill(white)
+    pygame.draw.rect(screen, white, piece)
     pygame.display.flip()
 
     # Draw the chess board
@@ -56,11 +67,11 @@ while running:
         for j in range(0, 8):
             if (i + j) % 2 == 0:
                 pygame.draw.rect(screen, black, (i * 87, j * 87, 87, 87))
-    screen.blit(image, rect)
 
+
+    screen.blit(image, piece)
     # Update the display
     pygame.display.flip()
-
 
 # Exit Pygame
 pygame.quit()
