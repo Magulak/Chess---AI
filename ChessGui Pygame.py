@@ -1,28 +1,35 @@
 import pygame
+from PIL import Image
 
+# chessboard size
 size = (700, 700)
-piece_draging = False
 
 pygame.init()
-
 screen = pygame.display.set_mode(size)
-
 pygame.display.set_caption("Chess Board")
 
-# Load image
-image = pygame.image.load('Piece.png').convert()
+# Load and resize image
+image = Image.open("Piece.png")
+image = image.resize((87, 87))
+image.save("Piece1.png")
+
+# Load resized image and create rect based on that image
+image = pygame.image.load('Piece1.png').convert()
 piece = image.get_rect()
-collidelist = []
+
+# list of pieces and their position
+collide_list = []
+
+piece_draging = False
 
 x = 0
 while x <= 7:
     exec(f"piece{x} = piece.copy()")
-    exec(f"collidelist.append(piece{x})")
+    exec(f"collide_list.append(piece{x})")
     x = x + 1
-for i, value in enumerate(collidelist):
+for i, value in enumerate(collide_list):
     print(f"Index: {i}, Value: {value}")
 
-# rect.center = (200, 300)
 
 # Define the colors & fps
 white = (255, 255, 255)
@@ -40,7 +47,7 @@ while running:
 
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
-                for piece in collidelist:  # Multiple object collision
+                for piece in collide_list:  # Multiple object collision
                     if piece.collidepoint(event.pos):
                         piece_draging = True
                         mouse_x, mouse_y = event.pos
@@ -58,9 +65,9 @@ while running:
                 piece.y = mouse_y + offset_y
 
     # Fill the screen with white
-    # screen.fill(white)
+    screen.fill(white)
     pygame.draw.rect(screen, white, piece)
-    pygame.display.flip()
+    pygame.display.flip()  # TODO screen blinks cause you redraw it all the time, create back buffer
 
     # Draw the chess board
     for i in range(0, 8):
@@ -69,7 +76,15 @@ while running:
                 pygame.draw.rect(screen, black, (i * 87, j * 87, 87, 87))
 
 
-    screen.blit(image, piece)
+    # screen.blit(image, piece)
+    screen.blit(image, collide_list[0])
+    screen.blit(image, collide_list[1])
+    screen.blit(image, collide_list[2])
+    screen.blit(image, collide_list[3])
+    screen.blit(image, collide_list[4])  # TODO FIX THIS !!!
+    screen.blit(image, collide_list[5])
+    screen.blit(image, collide_list[6])
+    screen.blit(image, collide_list[7])
     # Update the display
     pygame.display.flip()
 
