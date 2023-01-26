@@ -8,14 +8,12 @@ def draw_chessboard(surface):
             if (i + j) % 2 == 0:
                 pygame.draw.rect(surface, black, (i * 87, j * 87, 87, 87))
 
-def handle_mouse_events(event):
-
 
 # Window size
-size = (700, 700)
+window_size = (700, 700)
 
 pygame.init()
-screen = pygame.display.set_mode(size)
+screen = pygame.display.set_mode(window_size)
 
 pygame.display.set_caption("Chess Board")
 
@@ -30,13 +28,10 @@ image = pygame.image.load('Piece1.png').convert()
 # Make image see-through
 image.set_alpha(200)
 
-
-
 # list of pieces and their position
 piece_position_list = []
 
 piece_dragging = False
-
 
 # TODO WHITE PIECES
 # Create rect based on image, and set its basic coordinates. and make 7 copies of that piece, and set them on board
@@ -56,12 +51,12 @@ while x <= 8:
     # KING
 
 # TODO BLACK PIECES
-    # PAWN
-    # KNIGHT
-    # BISHOP
-    # ROOK
-    # QUEEN
-    # KING
+# PAWN
+# KNIGHT
+# BISHOP
+# ROOK
+# QUEEN
+# KING
 
 
 # Define the colors & fps
@@ -72,13 +67,16 @@ running = True
 
 clock = pygame.time.Clock()
 
-# create back buffer and fill it with white color.
+# Create back buffer and fill it with white color.
+# Back_buffer will keep chess board in memory, so chess board won't be generated every iteration.
 back_buffer = pygame.Surface((screen.get_width(), screen.get_height()))
 back_buffer.fill(white)
+
 # TODO make so pieces 'lock in' the centre of a square.
 # TODO add more pieces.
 while running:
 
+    # --------------------------------------------  EVENTS  --------------------------------------------
     # Stop running if pygame window closed.
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -107,6 +105,8 @@ while running:
                     mouse_x, mouse_y = event.pos
                     dragged_piece.x = mouse_x + offset_x
                     dragged_piece.y = mouse_y + offset_y
+
+    # ---------------------------------------  END OF EVENTS ------------------------------------------------------
 
     # Fill the screen with white
     screen.fill(white)
