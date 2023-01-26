@@ -32,7 +32,7 @@ image.set_alpha(200)
 piece_position_list = []
 
 piece_dragging = False
-
+# ---------------------------------------- CREATING PIECES -----------------------------------------
 # TODO WHITE PIECES
 # Create rect based on image, and set its basic coordinates. and make 7 copies of that piece, and set them on board
 # PAWN
@@ -76,7 +76,7 @@ back_buffer.fill(white)
 # TODO add more pieces.
 while running:
 
-    # --------------------------------------------  EVENTS  --------------------------------------------
+    # -----------------------------------------  EVENTS  --------------------------------------------
     # Stop running if pygame window closed.
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -96,6 +96,15 @@ while running:
         elif event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1:
                 piece_dragging = False
+                # if cursor in is in zone of a black/white square then snap it to center of that square(87/2).
+                # if piece.x <= (x * 87) 
+                for i in range(0, 8):
+                    for j in range(0, 8):  # if a number is in that range, then give place that in a centre of square.
+                        if dragged_piece.x in range(i * 87, (j * 87) - 87):
+                            dragged_piece.x = (i * 87) - (87 / 2)
+                            if dragged_piece.y in range(i * 87, (j * 87) - 87):
+                                dragged_piece.y = (j * 87) - (87 / 2)
+
                 dragged_piece = None  # Dragged piece needs to be specified, otherwise all pieces react to dragging.
 
         # Overwrite piece's current position with cursors position + offset
@@ -106,8 +115,7 @@ while running:
                     dragged_piece.x = mouse_x + offset_x
                     dragged_piece.y = mouse_y + offset_y
 
-    # ---------------------------------------  END OF EVENTS ------------------------------------------------------
-
+    # ---------------------------------------  END OF EVENTS ---------------------------------------------------------
     # ---------------------------------------  DRAWING ON BOARD ------------------------------------------------------
 
     # Fill the screen with white
@@ -124,7 +132,7 @@ while running:
     # Update the display
     pygame.display.flip()
 
-    # --------------------------------------- END OF DRAWING ON BOARD ----------------------------------------
+    # ---------------------------------------- END OF DRAWING ON BOARD ----------------------------------------
 
 # Exit Pygame
 pygame.quit()
