@@ -108,6 +108,8 @@ while running:
 
     # ---------------------------------------  END OF EVENTS ------------------------------------------------------
 
+    # ---------------------------------------  DRAWING ON BOARD ------------------------------------------------------
+
     # Fill the screen with white
     screen.fill(white)
 
@@ -121,6 +123,8 @@ while running:
 
     # Update the display
     pygame.display.flip()
+
+    # --------------------------------------- END OF DRAWING ON BOARD ----------------------------------------
 
 # Exit Pygame
 pygame.quit()
