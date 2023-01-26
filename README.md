@@ -20,7 +20,7 @@ AI - NOT STARTED
   Decide model - DONE
   Get training data - NOT STARTED
   Train and optimise model - NOT STARTED
-  AI moves pieces on game engine board - NOT STARTED
+  AI moves pieces on game engine board - NOT STARTED 
   
   
 
