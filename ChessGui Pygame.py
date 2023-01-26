@@ -25,15 +25,18 @@ image.save("Piece1.png")
 # Load resized image and create rect based on that image
 image = pygame.image.load('Piece1.png').convert()
 piece = image.get_rect()
+piece.x, piece.y = 0,88
 
 # list of pieces and their position
 collide_list = []
 
 piece_draging = False
 
-x = 0
-while x <= 7:
-    exec(f"piece{x} = piece.copy()\ncollide_list.append(piece{x})\npiece.x, piece.y = x*79,x*79")
+x = 1
+while x <= 8:
+    exec(f"piece{x} = piece.copy()\n"
+         f"collide_list.append(piece{x})\n"
+         f"piece.x, piece.y = x*88,88")
     x = x + 1
 
 # Define the colors & fps
@@ -59,6 +62,7 @@ while running:
                 for piece in collide_list:  # Multiple object collision
                     if piece.collidepoint(event.pos):
                         piece_draging = True
+                        draged_piece = piece
                         mouse_x, mouse_y = event.pos
                         offset_x = piece.x - mouse_x
                         offset_y = piece.y - mouse_y
@@ -66,16 +70,17 @@ while running:
         elif event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1:
                 piece_draging = False
+                draged_piece = None
 
         elif event.type == pygame.MOUSEMOTION:
                 if piece_draging:
-                    mouse_x, mouse_y = event.pos
-                    piece.x = mouse_x + offset_x
-                    piece.y = mouse_y + offset_y
+                    for piece in collide_list:
+                        mouse_x, mouse_y = event.pos
+                        draged_piece.x = mouse_x + offset_x
+                        draged_piece.y = mouse_y + offset_y
 
     # Fill the screen with white
     screen.fill(white)
-    # pygame.draw.rect(screen, white, piece)
 
     # Draw the chess board
     draw_chessboard(back_buffer)
