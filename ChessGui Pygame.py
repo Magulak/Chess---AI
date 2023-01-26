@@ -25,6 +25,9 @@ image.save("Piece1.png")
 # Load resized image
 image = pygame.image.load('Piece1.png').convert()
 
+# Make image see-through
+image.set_alpha(200)
+
 
 
 # list of pieces and their position
@@ -33,7 +36,9 @@ piece_position_list = []
 piece_draging = False
 
 
+# TODO WHITE PIECES
 # Create rect based on image, and set its basic coordinates. and make 7 copies of that piece, and set them on board
+# PAWN
 piece = image.get_rect()
 piece.x, piece.y = 0, 87
 x = 1
@@ -42,6 +47,20 @@ while x <= 8:
          f"piece_position_list.append(piece{x})\n"
          f"piece.x, piece.y = x*87,87")
     x = x + 1
+    # KNIGHT
+    # BISHOP
+    # ROOK
+    # QUEEN
+    # KING
+
+# TODO BLACK PIECES
+    # PAWN
+    # KNIGHT
+    # BISHOP
+    # ROOK
+    # QUEEN
+    # KING
+
 
 # Define the colors & fps
 white = (255, 255, 255)
