@@ -33,7 +33,7 @@ piece_draging = False
 
 x = 0
 while x <= 7:
-    exec(f"piece{x} = piece.copy()\ncollide_list.append(piece{x})")
+    exec(f"piece{x} = piece.copy()\ncollide_list.append(piece{x})\npiece.x, piece.y = x*79,x*79")
     x = x + 1
 
 # Define the colors & fps
@@ -68,19 +68,20 @@ while running:
                 piece_draging = False
 
         elif event.type == pygame.MOUSEMOTION:
-            if piece_draging:
-                mouse_x, mouse_y = event.pos
-                piece.x = mouse_x + offset_x
-                piece.y = mouse_y + offset_y
+                if piece_draging:
+                    mouse_x, mouse_y = event.pos
+                    piece.x = mouse_x + offset_x
+                    piece.y = mouse_y + offset_y
 
     # Fill the screen with white
     screen.fill(white)
-    pygame.draw.rect(screen, white, piece)
+    # pygame.draw.rect(screen, white, piece)
 
     # Draw the chess board
     draw_chessboard(back_buffer)
 
     screen.blit(back_buffer, (0, 0))
+
     for piece in collide_list:
         screen.blit(image, piece)
 
