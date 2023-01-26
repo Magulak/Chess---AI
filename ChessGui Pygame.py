@@ -1,11 +1,20 @@
 import pygame
 from PIL import Image
 
-# chessboard size
+
+def draw_chessboard(surface):
+    for i in range(0, 8):
+        for j in range(0, 8):
+            if (i + j) % 2 == 0:
+                pygame.draw.rect(surface, black, (i * 87, j * 87, 87, 87))
+
+
+# Window size
 size = (700, 700)
 
 pygame.init()
 screen = pygame.display.set_mode(size)
+
 pygame.display.set_caption("Chess Board")
 
 # Load and resize image
@@ -26,17 +35,18 @@ x = 0
 while x <= 7:
     exec(f"piece{x} = piece.copy()\ncollide_list.append(piece{x})")
     x = x + 1
-for i, value in enumerate(collide_list):
-    print(f"Index: {i}, Value: {value}")
-
 
 # Define the colors & fps
 white = (255, 255, 255)
 black = (0, 0, 0)
 fps = 30
+running = True
 
 clock = pygame.time.Clock()
-running = True
+
+# create back buffer and fill it with white color
+back_buffer = pygame.Surface((screen.get_width(), screen.get_height()))
+back_buffer.fill(white)
 
 while running:
 
@@ -66,24 +76,14 @@ while running:
     # Fill the screen with white
     screen.fill(white)
     pygame.draw.rect(screen, white, piece)
-    pygame.display.flip()  # TODO screen blinks cause you redraw it all the time, create back buffer
-    # TODO set image as background, cause its wasting cpu power.
+
     # Draw the chess board
-    for i in range(0, 8):
-        for j in range(0, 8):
-            if (i + j) % 2 == 0:
-                pygame.draw.rect(screen, black, (i * 87, j * 87, 87, 87))
+    draw_chessboard(back_buffer)
 
+    screen.blit(back_buffer, (0, 0))
+    for piece in collide_list:
+        screen.blit(image, piece)
 
-    # screen.blit(image, piece)
-    screen.blit(image, collide_list[0])
-    screen.blit(image, collide_list[1])
-    screen.blit(image, collide_list[2])
-    screen.blit(image, collide_list[3])
-    screen.blit(image, collide_list[4])  # TODO FIX THIS !!!
-    screen.blit(image, collide_list[5])
-    screen.blit(image, collide_list[6])
-    screen.blit(image, collide_list[7])
     # Update the display
     pygame.display.flip()
 
