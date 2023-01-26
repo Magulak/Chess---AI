@@ -24,8 +24,7 @@ piece_draging = False
 
 x = 0
 while x <= 7:
-    exec(f"piece{x} = piece.copy()")
-    exec(f"collide_list.append(piece{x})")
+    exec(f"piece{x} = piece.copy()\ncollide_list.append(piece{x})")
     x = x + 1
 for i, value in enumerate(collide_list):
     print(f"Index: {i}, Value: {value}")
@@ -68,7 +67,7 @@ while running:
     screen.fill(white)
     pygame.draw.rect(screen, white, piece)
     pygame.display.flip()  # TODO screen blinks cause you redraw it all the time, create back buffer
-
+    # TODO set image as background, cause its wasting cpu power.
     # Draw the chess board
     for i in range(0, 8):
         for j in range(0, 8):
