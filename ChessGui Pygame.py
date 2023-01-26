@@ -32,7 +32,7 @@ image.set_alpha(200)
 piece_position_list = []
 
 piece_dragging = False
-
+# ---------------------------------------- CREATING PIECES -----------------------------------------
 # TODO WHITE PIECES
 # Create rect based on image, and set its basic coordinates. and make 7 copies of that piece, and set them on board
 # PAWN
@@ -76,7 +76,7 @@ back_buffer.fill(white)
 # TODO add more pieces.
 while running:
 
-    # --------------------------------------------  EVENTS  --------------------------------------------
+    # -----------------------------------------  EVENTS  --------------------------------------------
     # Stop running if pygame window closed.
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -96,6 +96,18 @@ while running:
         elif event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1:
                 piece_dragging = False
+                # if cursor in is in zone of a black/white square then snap it to center of that square.
+                # TODO Position of chess piece is determined by it's left upper corner, it needs better algorithm
+                # TODO Something like dragged_piece.x + 87 = (i * 87 would maybe fix it, but it's impossible to execute.
+                # TODO Crashes when clicked on nothing.
+                for i in range(0, 8):
+                    for j in range(0, 8):
+                        x_range = range(i * 87, (i * 87) + 87)
+                        y_range = range(j * 87, (j * 87) + 87)
+                        if dragged_piece.x in x_range and dragged_piece.y in y_range:
+                            dragged_piece.x = (i * 87)
+                            dragged_piece.y = (j * 87)
+
                 dragged_piece = None  # Dragged piece needs to be specified, otherwise all pieces react to dragging.
 
         # Overwrite piece's current position with cursors position + offset
@@ -106,7 +118,8 @@ while running:
                     dragged_piece.x = mouse_x + offset_x
                     dragged_piece.y = mouse_y + offset_y
 
-    # ---------------------------------------  END OF EVENTS ------------------------------------------------------
+    # ---------------------------------------  END OF EVENTS ---------------------------------------------------------
+    # ---------------------------------------  DRAWING ON BOARD ------------------------------------------------------
 
     # Fill the screen with white
     screen.fill(white)
@@ -121,6 +134,8 @@ while running:
 
     # Update the display
     pygame.display.flip()
+
+    # ---------------------------------------- END OF DRAWING ON BOARD ----------------------------------------
 
 # Exit Pygame
 pygame.quit()
