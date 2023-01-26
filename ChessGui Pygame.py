@@ -22,21 +22,25 @@ image = Image.open("Piece.png")
 image = image.resize((87, 87))
 image.save("Piece1.png")
 
-# Load resized image and create rect based on that image
+# Load resized image
 image = pygame.image.load('Piece1.png').convert()
-piece = image.get_rect()
-piece.x, piece.y = 0,88
+
+
 
 # list of pieces and their position
-collide_list = []
+piece_position_list = []
 
 piece_draging = False
 
+
+# Create rect based on image, and set its basic coordinates. and make 7 copies of that piece, and set them on board
+piece = image.get_rect()
+piece.x, piece.y = 0, 87
 x = 1
 while x <= 8:
     exec(f"piece{x} = piece.copy()\n"
-         f"collide_list.append(piece{x})\n"
-         f"piece.x, piece.y = x*88,88")
+         f"piece_position_list.append(piece{x})\n"
+         f"piece.x, piece.y = x*87,87")
     x = x + 1
 
 # Define the colors & fps
@@ -50,7 +54,8 @@ clock = pygame.time.Clock()
 # create back buffer and fill it with white color
 back_buffer = pygame.Surface((screen.get_width(), screen.get_height()))
 back_buffer.fill(white)
-
+# TODO make so pieces 'lock in' the centre of a square.
+# TODO add more pieces.
 while running:
 
     for event in pygame.event.get():
@@ -59,7 +64,7 @@ while running:
 
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
-                for piece in collide_list:  # Multiple object collision
+                for piece in piece_position_list:  # Multiple object collision
                     if piece.collidepoint(event.pos):
                         piece_draging = True
                         draged_piece = piece
@@ -73,11 +78,11 @@ while running:
                 draged_piece = None
 
         elif event.type == pygame.MOUSEMOTION:
-                if piece_draging:
-                    for piece in collide_list:
-                        mouse_x, mouse_y = event.pos
-                        draged_piece.x = mouse_x + offset_x
-                        draged_piece.y = mouse_y + offset_y
+            if piece_draging:
+                for piece in piece_position_list:
+                    mouse_x, mouse_y = event.pos
+                    draged_piece.x = mouse_x + offset_x
+                    draged_piece.y = mouse_y + offset_y
 
     # Fill the screen with white
     screen.fill(white)
@@ -87,7 +92,7 @@ while running:
 
     screen.blit(back_buffer, (0, 0))
 
-    for piece in collide_list:
+    for piece in piece_position_list:
         screen.blit(image, piece)
 
     # Update the display
