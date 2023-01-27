@@ -1,13 +1,15 @@
 import pygame
 from PIL import Image
 
-
 def draw_chessboard(surface):
     for i in range(0, 8):
         for j in range(0, 8):
             if (i + j) % 2 == 0:
                 pygame.draw.rect(surface, black, (i * 87, j * 87, 87, 87))
-
+class NamedRect:
+    def __init__(self, rect, var_name):
+        self.rect = rect
+        self.var_name = var_name
 
 # Window size
 window_size = (700, 700)
@@ -21,28 +23,36 @@ pygame.display.set_caption("Chess Board")
 image = Image.open("Piece.png")
 image = image.resize((87, 87))
 image.save("Piece1.png")
-
-# Load resized image
 image = pygame.image.load('Piece1.png').convert()
 
+w_pawn_img = Image.open("w_pawn.png")
+w_pawn_img = w_pawn_img.resize((87, 87))
+w_pawn_img.save("w_pawn1.png")
+w_pawn_img = pygame.image.load('w_pawn1.png').convert()
+
+
 # Make image see-through
-image.set_alpha(200)
+# image_list = [image, w_pawn_img]
+image.set_alpha(200)  # every object from list of images gets chanel alpha at 200
+w_pawn_img.set_alpha(200)
+# for img in image_list:
+#     img.set_alpha(230)
 
 # list of pieces and their position
 piece_position_list = []
 
 piece_dragging = False
 # ---------------------------------------- CREATING PIECES -----------------------------------------
-# TODO WHITE PIECES
+# TODO BLACK PIECES
 # Create rect based on image, and set its basic coordinates. and make 7 copies of that piece, and set them on board
 # PAWN
-piece = image.get_rect()
-piece.x, piece.y = 0, 87
-x = 1
+b_pawn = image.get_rect()  # image.get rect method only decides size of rect based on image size
+b_pawn.x, b_pawn.y = 0, 87
+x = 0
 while x <= 8:
-    exec(f"piece{x} = piece.copy()\n"
-         f"piece_position_list.append(piece{x})\n"
-         f"piece.x, piece.y = x*87,87")
+    exec(f"b_pawn{x} = b_pawn.copy()\n"
+         f"piece_position_list.append(NamedRect(b_pawn{x},'b_pawn'))\n"
+         f"b_pawn{x}.x, b_pawn{x}.y = x*87,87") # i added {x} to b_pawn
     x = x + 1
     # KNIGHT
     # BISHOP
@@ -50,8 +60,15 @@ while x <= 8:
     # QUEEN
     # KING
 
-# TODO BLACK PIECES
+# TODO WHITE PIECES
 # PAWN
+white_pawn = w_pawn_img.get_rect()
+x = 0
+while x <= 8:
+    exec(f"w_pawn{x} = white_pawn.copy()\n"
+         f"piece_position_list.append(NamedRect(w_pawn{x},'w_pawn'))\n"
+         f"w_pawn{x}.x, w_pawn{x}.y = x*87,522")
+    x = x + 1
 # KNIGHT
 # BISHOP
 # ROOK
@@ -72,8 +89,6 @@ clock = pygame.time.Clock()
 back_buffer = pygame.Surface((screen.get_width(), screen.get_height()))
 back_buffer.fill(white)
 
-# TODO make so pieces 'lock in' the centre of a square.
-# TODO add more pieces.
 while running:
 
     # -----------------------------------------  EVENTS  --------------------------------------------
@@ -83,20 +98,20 @@ while running:
             running = False
 
         # Detect left mouse click-hold.
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            if event.button == 1:
+        elif event.type == pygame.MOUSEBUTTONDOWN: # todo make a list of lists? conentents of that lists are:
+            if event.button == 1:   # todo [w_pawn_list, b_pawn_list, w_king_list] and those lists have piece's coords.
                 for piece in piece_position_list:  # Consider collision for every coordinate in list.
-                    if piece.collidepoint(event.pos):
+                    if piece.rect.collidepoint(event.pos):
                         piece_dragging = True
-                        dragged_piece = piece
+                        dragged_piece = piece.rect
                         mouse_x, mouse_y = event.pos
-                        offset_x = piece.x - mouse_x  # Offset - distance between right upper corner of image and cursor
-                        offset_y = piece.y - mouse_y
+                        offset_x = piece.rect.x - mouse_x  # Offset - distance between right upper corner of image and cursor
+                        offset_y = piece.rect.y - mouse_y
 
         elif event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1:
                 for piece in piece_position_list:  # this is fix for app crashing when no piece is clicked
-                    if piece.collidepoint(event.pos):  # Do this, if there is a piece under cursor.
+                    if piece.rect.collidepoint(event.pos):  # Do this, if there is a piece under cursor.
                         piece_dragging = False
                         # if cursor in is in zone of a black/white square then snap it to center of that square.
                         # TODO Position of chess piece is determined by it's left upper corner, it needs better algorithm
@@ -128,12 +143,17 @@ while running:
 
     # Draw the chess board
     draw_chessboard(back_buffer)
-    screen.blit(back_buffer, (0, 0))
-
     # Draw images of chess pieces on chess board
-    for piece in piece_position_list:
+    screen.blit(back_buffer, (0, 0))
+    b_pawn_pieces = [piece for piece in piece_position_list if piece.var_name == "b_pawn"]
+    for piece in b_pawn_pieces:
         screen.blit(image, piece)
 
+    # for piece in piece_position_list:
+    #     screen.blit(image, piece)
+    w_pawn_pieces = [piece for piece in piece_position_list if piece.var_name == "w_pawn"]
+    for piece in w_pawn_pieces:
+        screen.blit(w_pawn_img, piece)
     # Update the display
     pygame.display.flip()
 
