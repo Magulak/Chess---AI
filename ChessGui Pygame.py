@@ -98,14 +98,15 @@ while running:
             running = False
 
         # Detect left mouse click-hold.
-        elif event.type == pygame.MOUSEBUTTONDOWN: # todo make a list of lists? conentents of that lists are:
-            if event.button == 1:   # todo [w_pawn_list, b_pawn_list, w_king_list] and those lists have piece's coords.
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:
                 for piece in piece_position_list:  # Consider collision for every coordinate in list.
                     if piece.rect.collidepoint(event.pos):
                         piece_dragging = True
                         dragged_piece = piece.rect
                         mouse_x, mouse_y = event.pos
-                        offset_x = piece.rect.x - mouse_x  # Offset - distance between right upper corner of image and cursor
+                        offset_x = piece.rect.x - mouse_x  # Offset - distance between right upper corner of image
+                        # and cursor
                         offset_y = piece.rect.y - mouse_y
 
         elif event.type == pygame.MOUSEBUTTONUP:
@@ -113,10 +114,11 @@ while running:
                 for piece in piece_position_list:  # this is fix for app crashing when no piece is clicked
                     if piece.rect.collidepoint(event.pos):  # Do this, if there is a piece under cursor.
                         piece_dragging = False
-                        # if cursor in is in zone of a black/white square then snap it to center of that square.
-                        # TODO Position of chess piece is determined by it's left upper corner, it needs better algorithm
-                        # TODO Something like dragged_piece.x + 87 = (i * 87 would maybe fix it, but it's impossible to execute.
-                        # TODO Crashes when clicked on nothing.
+                        # TODO if cursor in is in zone of a black/white square then snap it to center of that square.
+                        # TODO Position of chess piece is determined by it's left upper corner, it needs better algori
+                        # TODO thm.
+                        # TODO Something like dragged_piece.x + 87 = (i * 87 would maybe fix it, but it's impossible
+                        # TODO to execute.
                         for i in range(0, 8):
                             for j in range(0, 8):
                                 x_range = range(i * 87, (i * 87) + 87)
@@ -143,17 +145,20 @@ while running:
 
     # Draw the chess board
     draw_chessboard(back_buffer)
+
     # Draw images of chess pieces on chess board
     screen.blit(back_buffer, (0, 0))
+
+    # Filter piece_position_list for b_pawn
     b_pawn_pieces = [piece for piece in piece_position_list if piece.var_name == "b_pawn"]
     for piece in b_pawn_pieces:
         screen.blit(image, piece)
 
-    # for piece in piece_position_list:
-    #     screen.blit(image, piece)
+    # Filter piece_position_list for b_pawn
     w_pawn_pieces = [piece for piece in piece_position_list if piece.var_name == "w_pawn"]
     for piece in w_pawn_pieces:
         screen.blit(w_pawn_img, piece)
+
     # Update the display
     pygame.display.flip()
 

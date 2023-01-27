@@ -232,20 +232,3 @@ class Chess:
     board_rect = board.get_rect()
     crashed = False
 
-    while not crashed:
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                crashed = True
-
-            print(event)
-        
-
-        pygame.display.update()
-        clock.tick(60)
-        chess_board_display.fill(white)
-
-        pygame.draw.rect(chess_board_display, (20, 20, 20), (500, 200, object_width, object_height))
-
-        # pygame.display.update()  # TODO give it correct parameters.
-        chess_board_display.blit(board, board_rect)
