@@ -95,18 +95,20 @@ while running:
 
         elif event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1:
-                piece_dragging = False
-                # if cursor in is in zone of a black/white square then snap it to center of that square.
-                # TODO Position of chess piece is determined by it's left upper corner, it needs better algorithm
-                # TODO Something like dragged_piece.x + 87 = (i * 87 would maybe fix it, but it's impossible to execute.
-                # TODO Crashes when clicked on nothing.
-                for i in range(0, 8):
-                    for j in range(0, 8):
-                        x_range = range(i * 87, (i * 87) + 87)
-                        y_range = range(j * 87, (j * 87) + 87)
-                        if dragged_piece.x in x_range and dragged_piece.y in y_range:
-                            dragged_piece.x = (i * 87)
-                            dragged_piece.y = (j * 87)
+                for piece in piece_position_list:  # this is fix for app crashing when no piece is clicked
+                    if piece.collidepoint(event.pos):  # Do this, if there is a piece under cursor.
+                        piece_dragging = False
+                        # if cursor in is in zone of a black/white square then snap it to center of that square.
+                        # TODO Position of chess piece is determined by it's left upper corner, it needs better algorithm
+                        # TODO Something like dragged_piece.x + 87 = (i * 87 would maybe fix it, but it's impossible to execute.
+                        # TODO Crashes when clicked on nothing.
+                        for i in range(0, 8):
+                            for j in range(0, 8):
+                                x_range = range(i * 87, (i * 87) + 87)
+                                y_range = range(j * 87, (j * 87) + 87)
+                                if dragged_piece.x in x_range and dragged_piece.y in y_range:
+                                    dragged_piece.x = (i * 87)
+                                    dragged_piece.y = (j * 87)
 
                 dragged_piece = None  # Dragged piece needs to be specified, otherwise all pieces react to dragging.
 
