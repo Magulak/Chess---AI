@@ -82,6 +82,8 @@ black = (0, 0, 0)
 fps = 30
 running = True
 
+# TODO ADD COMMUNICATION NOW !!!! To forsee future problems.
+
 clock = pygame.time.Clock()
 
 # Create back buffer and fill it with white color.
