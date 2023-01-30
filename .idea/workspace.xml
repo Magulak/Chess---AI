@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="affb70f6-4098-44e2-85d4-6aa3fe042778" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Chess---AI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Chess---AI.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChessGui Pygame.py" beforeDir="false" afterPath="$PROJECT_DIR$/ChessGui Pygame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pawn.jpg" beforeDir="false" />
     </list>
     <list id="4d9bc969-318d-4e4c-9e4e-aaae1c7e5dcb" name="Changes by zdroj" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,12 +30,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;last_opened_file_path&quot;: &quot;G:/Chess---AI&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "G:/Chess---AI",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Python.ChessGui Pygame">
     <configuration name="ChessGUI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Chess---AI" />
@@ -59,17 +59,17 @@
       <method v="2" />
     </configuration>
     <configuration name="ChessGui Pygame" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Chess---AI" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="G:\Chess---AI\venv\Scripts\python.exe" />
+      <option name="SDK_HOME" value="C:\Skrypty\Scripts\Interpreters\Chess ai\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ChessGui Pygame.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -121,6 +121,12 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.ChessGUI" />
+      <item itemvalue="Python.ChessGui Pygame" />
+      <item itemvalue="Python.TestDragAndDrop" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.ChessGui Pygame" />
