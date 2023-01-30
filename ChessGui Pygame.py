@@ -98,6 +98,19 @@ clock = pygame.time.Clock()
 back_buffer = pygame.Surface((screen.get_width(), screen.get_height()))
 back_buffer.fill(white)
 
+
+#
+# def convert_to_chess_coordinates(x, y):
+#     x_coordinate = chr(x // 87 + 97)
+#     y_coordinate = 8 - y // 87
+#     return x_coordinate + str(y_coordinate)
+#
+# # Example usage:
+# x = 4 * 87
+# y = 3 * 87
+# print(convert_to_chess_coordinates(x, y)) # Output: "d6"
+
+
 while running:
 
     # -----------------------------------------  EVENTS  --------------------------------------------
