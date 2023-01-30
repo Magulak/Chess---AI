@@ -136,20 +136,20 @@ class Chess:
         [[5, 1], [4, 1], [3, 1], [6, 1], [1, 1], [3, 1], [4, 1], [5, 1]]]  # y7
     #     x0       x1       x2     x3      x4       x5      x6      x7
 
-    chess_board2 = Pawn.moveset(0, 1, 1, 5, 0, chess_board2)
-    for x in range(len(chess_board2)):
-        print(chess_board2[x])
+    # chess_board2 = Pawn.moveset(0, 1, 1, 5, 0, chess_board2)
+    # for x in range(len(chess_board2)):
+    #     print(chess_board2[x])
     # pawn = Piece("Pawn")
     # knight = Piece("Knight")
     # king = Piece("king")
     # queen = Piece("queen")
     # bishop = Piece("bishop")
 
-    piece_coordinates = chess_board2[0][0]
-    rook = Piece("rook", piece_coordinates)
-    print(rook.x)
-    print(rook.y)
-    print(rook.ptype)
+    # piece_coordinates = chess_board2[0][0]
+    # rook = Piece("rook", piece_coordinates)
+    # print(rook.x)
+    # print(rook.y)
+    # print(rook.ptype)
 
     """
     chess_board[y] [x] [data]
@@ -215,37 +215,4 @@ class Chess:
     # #         print("Queen")
     # #         chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
 
-    # TODO if clicked button == ` then break:
-    pygame.init()
 
-    square_size = width, height = 1320, 1240
-    white, black, red = (255, 255, 255), (0, 0, 0), (255, 0, 0)
-
-    chess_board_display = pygame.display.set_mode(square_size)
-
-    chess_board_display.fill(white)
-    pygame.display.set_caption('Chess--AI')
-
-    object_width = 20
-    object_height = 20
-    board = pygame.image.load("Chess_Board.jpg")
-    board_rect = board.get_rect()
-    crashed = False
-
-    while not crashed:
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                crashed = True
-
-            print(event)
-        
-
-        pygame.display.update()
-        clock.tick(60)
-        chess_board_display.fill(white)
-
-        pygame.draw.rect(chess_board_display, (20, 20, 20), (500, 200, object_width, object_height))
-
-        # pygame.display.update()  # TODO give it correct parameters.
-        chess_board_display.blit(board, board_rect)

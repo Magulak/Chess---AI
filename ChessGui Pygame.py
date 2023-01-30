@@ -1,5 +1,6 @@
 import pygame
 from PIL import Image
+from main import Chess
 
 def draw_chessboard(surface):
     for i in range(0, 8):
@@ -11,6 +12,12 @@ class NamedRect:
         self.rect = rect
         self.var_name = var_name
 
+chess_board = Chess().chess_board2
+for chess in chess_board:
+    print(chess)
+
+# TODO Read all values from chessboard , and depending on value draw that piece on board (eg. add it to
+# TODO piece_position_list = []
 # Window size
 window_size = (700, 700)
 
@@ -124,8 +131,10 @@ while running:
                                 x_range = range(i * 87, (i * 87) + 87)
                                 y_range = range(j * 87, (j * 87) + 87)
                                 if dragged_piece.x in x_range and dragged_piece.y in y_range:
+                                    # TODO SEND THIS MOVE HERE TO ENGINE TOO !!! IF IT SAYS THAT MOVE IS LEGAL THEN CONT
                                     dragged_piece.x = (i * 87)
                                     dragged_piece.y = (j * 87)
+
 
                 dragged_piece = None  # Dragged piece needs to be specified, otherwise all pieces react to dragging.
 
@@ -138,6 +147,13 @@ while running:
                     dragged_piece.y = mouse_y + offset_y
 
     # ---------------------------------------  END OF EVENTS ---------------------------------------------------------
+
+    # ---------------------------------------  COMMUNICATION WITH ENGINE --------------------------------------
+    # TODO Realise where are the pieces according to chessboard fields.
+    # Read values from piece_position_list = [] and locate them on chess_board
+    # piece.x % 87 = Pozycja na osi x
+    # piece.y % 87 = Pozycja na osi y
+    # --------------------------------- END OF COMMUNICATION WITH ENGINE --------------------------------------
     # ---------------------------------------  DRAWING ON BOARD ------------------------------------------------------
 
     # Fill the screen with white
@@ -145,6 +161,7 @@ while running:
 
     # Draw the chess board
     draw_chessboard(back_buffer)
+
     # Draw images of chess pieces on chess board
     screen.blit(back_buffer, (0, 0))
     b_pawn_pieces = [piece for piece in piece_position_list if piece.var_name == "b_pawn"]
