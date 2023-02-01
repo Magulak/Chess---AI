@@ -2,6 +2,10 @@ import pygame
 from PIL import Image
 from main import Chess
 
+# for sure you can write def convert from x_ycoord_tochess_coord()
+# function
+# and maybe from chess_coord to normal coord too.
+
 def draw_chessboard(surface):
     for i in range(0, 8):
         for j in range(0, 8):
