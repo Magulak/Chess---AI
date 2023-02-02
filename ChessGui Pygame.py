@@ -6,11 +6,22 @@ from main import Chess
 # function
 # and maybe from chess_coord to normal coord too.
 
+
 def draw_chessboard(surface):
     for i in range(0, 8):
         for j in range(0, 8):
             if (i + j) % 2 == 0:
                 pygame.draw.rect(surface, black, (i * 87, j * 87, 87, 87))
+
+
+def convert_GUI_to_eng():  # TODO
+    pass
+
+
+def convert_eng_to_GUI():  # TODO
+    pass
+
+
 class NamedRect:
     def __init__(self, rect, var_name):
         self.rect = rect
@@ -41,7 +52,6 @@ w_pawn_img = w_pawn_img.resize((87, 87))
 w_pawn_img.save("w_pawn1.png")
 w_pawn_img = pygame.image.load('w_pawn1.png').convert()
 
-
 # Make image see-through
 # image_list = [image, w_pawn_img]
 image.set_alpha(200)  # every object from list of images gets chanel alpha at 200
@@ -53,7 +63,13 @@ w_pawn_img.set_alpha(200)
 piece_position_list = []
 
 piece_dragging = False
+
+
 # ---------------------------------------- CREATING PIECES -----------------------------------------
+def create_piece(piece_type, piece_coordinates):
+    pass  # TODO Creates chess piece
+
+
 # TODO BLACK PIECES
 # Create rect based on image, and set its basic coordinates. and make 7 copies of that piece, and set them on board
 # PAWN
@@ -63,7 +79,7 @@ x = 0
 while x <= 8:
     exec(f"b_pawn{x} = b_pawn.copy()\n"
          f"piece_position_list.append(NamedRect(b_pawn{x},'b_pawn'))\n"
-         f"b_pawn{x}.x, b_pawn{x}.y = x*87,87") # i added {x} to b_pawn
+         f"b_pawn{x}.x, b_pawn{x}.y = x*87,87")  # I added {x} to b_pawn
     x = x + 1
     # KNIGHT
     # BISHOP
@@ -124,14 +140,15 @@ while running:
             running = False
 
         # Detect left mouse click-hold.
-        elif event.type == pygame.MOUSEBUTTONDOWN: # todo make a list of lists? conentents of that lists are:
-            if event.button == 1:   # todo [w_pawn_list, b_pawn_list, w_king_list] and those lists have piece's coords.
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:
                 for piece in piece_position_list:  # Consider collision for every coordinate in list.
                     if piece.rect.collidepoint(event.pos):
                         piece_dragging = True
                         dragged_piece = piece.rect
                         mouse_x, mouse_y = event.pos
-                        offset_x = piece.rect.x - mouse_x  # Offset - distance between right upper corner of image and cursor
+                        offset_x = piece.rect.x - mouse_x  # Offset - distance between right upper corner of image
+                        # and cursor
                         offset_y = piece.rect.y - mouse_y
 
         elif event.type == pygame.MOUSEBUTTONUP:
@@ -139,17 +156,21 @@ while running:
                 for piece in piece_position_list:  # this is fix for app crashing when no piece is clicked
                     if piece.rect.collidepoint(event.pos):  # Do this, if there is a piece under cursor.
                         piece_dragging = False
-                        # if cursor in is in zone of a black/white square then snap it to center of that square.
-                        # TODO Position of chess piece is determined by it's left upper corner, it needs better algorithm
-                        # TODO Something like dragged_piece.x + 87 = (i * 87 would maybe fix it, but it's impossible to execute.
-                        # TODO Crashes when clicked on nothing.
+                        # TODO if cursor in is in zone of a black/white square then snap it to center of that square.
+                        # TODO Position of chess piece is determined by it's left upper corner, it needs better algori
+                        # TODO thm.
+                        # TODO Something like dragged_piece.x + 87 = (i * 87 would maybe fix it, but it's impossible
+                        # TODO to execute.
                         for i in range(0, 8):
                             for j in range(0, 8):
                                 x_range = range(i * 87, (i * 87) + 87)
                                 y_range = range(j * 87, (j * 87) + 87)
                                 if dragged_piece.x in x_range and dragged_piece.y in y_range:
+                                    dragged_piece.x = (i * 87)  # toto ADD OFFSET !!)
+
                                     # TODO SEND THIS MOVE HERE TO ENGINE TOO !!! IF IT SAYS THAT MOVE IS LEGAL THEN CONT
                                     dragged_piece.x = (i * 87)
+
                                     dragged_piece.y = (j * 87)
 
 
@@ -181,15 +202,17 @@ while running:
 
     # Draw images of chess pieces on chess board
     screen.blit(back_buffer, (0, 0))
+
+    # Filter piece_position_list for b_pawn
     b_pawn_pieces = [piece for piece in piece_position_list if piece.var_name == "b_pawn"]
     for piece in b_pawn_pieces:
         screen.blit(image, piece)
 
-    # for piece in piece_position_list:
-    #     screen.blit(image, piece)
+    # Filter piece_position_list for b_pawn
     w_pawn_pieces = [piece for piece in piece_position_list if piece.var_name == "w_pawn"]
     for piece in w_pawn_pieces:
         screen.blit(w_pawn_img, piece)
+
     # Update the display
     pygame.display.flip()
 
