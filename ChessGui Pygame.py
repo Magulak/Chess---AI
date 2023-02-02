@@ -1,5 +1,10 @@
 import pygame
 from PIL import Image
+from main import Chess
+
+# for sure you can write def convert from x_ycoord_tochess_coord()
+# function
+# and maybe from chess_coord to normal coord too.
 
 
 def draw_chessboard(surface):
@@ -22,7 +27,12 @@ class NamedRect:
         self.rect = rect
         self.var_name = var_name
 
+chess_board = Chess().chess_board2
+for chess in chess_board:
+    print(chess)
 
+# TODO Read all values from chessboard , and depending on value draw that piece on board (eg. add it to
+# TODO piece_position_list = []
 # Window size
 window_size = (700, 700)
 
@@ -99,12 +109,27 @@ black = (0, 0, 0)
 fps = 30
 running = True
 
+# TODO ADD COMMUNICATION NOW !!!! To forsee future problems.
+
 clock = pygame.time.Clock()
 
 # Create back buffer and fill it with white color.
 # Back_buffer will keep chess board in memory, so chess board won't be generated every iteration.
 back_buffer = pygame.Surface((screen.get_width(), screen.get_height()))
 back_buffer.fill(white)
+
+
+#
+# def convert_to_chess_coordinates(x, y):
+#     x_coordinate = chr(x // 87 + 97)
+#     y_coordinate = 8 - y // 87
+#     return x_coordinate + str(y_coordinate)
+#
+# # Example usage:
+# x = 4 * 87
+# y = 3 * 87
+# print(convert_to_chess_coordinates(x, y)) # Output: "d6"
+
 
 while running:
 
@@ -142,7 +167,12 @@ while running:
                                 y_range = range(j * 87, (j * 87) + 87)
                                 if dragged_piece.x in x_range and dragged_piece.y in y_range:
                                     dragged_piece.x = (i * 87)  # toto ADD OFFSET !!)
+
+                                    # TODO SEND THIS MOVE HERE TO ENGINE TOO !!! IF IT SAYS THAT MOVE IS LEGAL THEN CONT
+                                    dragged_piece.x = (i * 87)
+
                                     dragged_piece.y = (j * 87)
+
 
                 dragged_piece = None  # Dragged piece needs to be specified, otherwise all pieces react to dragging.
 
@@ -155,6 +185,13 @@ while running:
                     dragged_piece.y = mouse_y + offset_y
 
     # ---------------------------------------  END OF EVENTS ---------------------------------------------------------
+
+    # ---------------------------------------  COMMUNICATION WITH ENGINE --------------------------------------
+    # TODO Realise where are the pieces according to chessboard fields.
+    # Read values from piece_position_list = [] and locate them on chess_board
+    # piece.x % 87 = Pozycja na osi x
+    # piece.y % 87 = Pozycja na osi y
+    # --------------------------------- END OF COMMUNICATION WITH ENGINE --------------------------------------
     # ---------------------------------------  DRAWING ON BOARD ------------------------------------------------------
 
     # Fill the screen with white

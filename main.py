@@ -136,20 +136,20 @@ class Chess:
         [[5, 1], [4, 1], [3, 1], [6, 1], [1, 1], [3, 1], [4, 1], [5, 1]]]  # y7
     #     x0       x1       x2     x3      x4       x5      x6      x7
 
-    chess_board2 = Pawn.moveset(0, 1, 1, 5, 0, chess_board2)
-    for x in range(len(chess_board2)):
-        print(chess_board2[x])
+    # chess_board2 = Pawn.moveset(0, 1, 1, 5, 0, chess_board2)
+    # for x in range(len(chess_board2)):
+    #     print(chess_board2[x])
     # pawn = Piece("Pawn")
     # knight = Piece("Knight")
     # king = Piece("king")
     # queen = Piece("queen")
     # bishop = Piece("bishop")
 
-    piece_coordinates = chess_board2[0][0]
-    rook = Piece("rook", piece_coordinates)
-    print(rook.x)
-    print(rook.y)
-    print(rook.ptype)
+    # piece_coordinates = chess_board2[0][0]
+    # rook = Piece("rook", piece_coordinates)
+    # print(rook.x)
+    # print(rook.y)
+    # print(rook.ptype)
 
     """
     chess_board[y] [x] [data]
@@ -215,6 +215,7 @@ class Chess:
     # #         print("Queen")
     # #         chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
 
+
     # TODO if clicked button == ` then break:
     pygame.init()
 
@@ -231,4 +232,5 @@ class Chess:
     board = pygame.image.load("Chess_Board.jpg")
     board_rect = board.get_rect()
     crashed = False
+
 
