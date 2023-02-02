@@ -1,15 +1,27 @@
 import pygame
 from PIL import Image
 
+
 def draw_chessboard(surface):
     for i in range(0, 8):
         for j in range(0, 8):
             if (i + j) % 2 == 0:
                 pygame.draw.rect(surface, black, (i * 87, j * 87, 87, 87))
+
+
+def convert_GUI_to_eng():  # TODO
+    pass
+
+
+def convert_eng_to_GUI():  # TODO
+    pass
+
+
 class NamedRect:
     def __init__(self, rect, var_name):
         self.rect = rect
         self.var_name = var_name
+
 
 # Window size
 window_size = (700, 700)
@@ -30,7 +42,6 @@ w_pawn_img = w_pawn_img.resize((87, 87))
 w_pawn_img.save("w_pawn1.png")
 w_pawn_img = pygame.image.load('w_pawn1.png').convert()
 
-
 # Make image see-through
 # image_list = [image, w_pawn_img]
 image.set_alpha(200)  # every object from list of images gets chanel alpha at 200
@@ -42,7 +53,13 @@ w_pawn_img.set_alpha(200)
 piece_position_list = []
 
 piece_dragging = False
+
+
 # ---------------------------------------- CREATING PIECES -----------------------------------------
+def create_piece(piece_type, piece_coordinates):
+    pass  # TODO Creates chess piece
+
+
 # TODO BLACK PIECES
 # Create rect based on image, and set its basic coordinates. and make 7 copies of that piece, and set them on board
 # PAWN
@@ -52,7 +69,7 @@ x = 0
 while x <= 8:
     exec(f"b_pawn{x} = b_pawn.copy()\n"
          f"piece_position_list.append(NamedRect(b_pawn{x},'b_pawn'))\n"
-         f"b_pawn{x}.x, b_pawn{x}.y = x*87,87") # i added {x} to b_pawn
+         f"b_pawn{x}.x, b_pawn{x}.y = x*87,87")  # I added {x} to b_pawn
     x = x + 1
     # KNIGHT
     # BISHOP
@@ -124,7 +141,7 @@ while running:
                                 x_range = range(i * 87, (i * 87) + 87)
                                 y_range = range(j * 87, (j * 87) + 87)
                                 if dragged_piece.x in x_range and dragged_piece.y in y_range:
-                                    dragged_piece.x = (i * 87)
+                                    dragged_piece.x = (i * 87)  # toto ADD OFFSET !!)
                                     dragged_piece.y = (j * 87)
 
                 dragged_piece = None  # Dragged piece needs to be specified, otherwise all pieces react to dragging.
