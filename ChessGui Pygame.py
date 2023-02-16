@@ -2,15 +2,19 @@ import pygame
 from PIL import Image
 from main import Chess
 
+
 def draw_chessboard(surface):
     for i in range(0, 8):
         for j in range(0, 8):
             if (i + j) % 2 == 0:
                 pygame.draw.rect(surface, black, (i * 87, j * 87, 87, 87))
+
+
 class NamedRect:
     def __init__(self, rect, var_name):
         self.rect = rect
         self.var_name = var_name
+
 
 chess_board = Chess().chess_board2
 # print(chess_board[0][0])  # rook [5, 2]
@@ -23,7 +27,8 @@ for i in range(len(chess_board)):
         piece_x = j * 87
         piece_y = i * 87
         piece_type, piece_color = chess_board[i][j]
-        print(piece_x,piece_y,piece_type,piece_color)
+        print(piece_x, piece_y, piece_type, piece_color)
+
 
 """
  1. correlate x,y values with correct position on board
@@ -55,17 +60,20 @@ w_pawn_img = w_pawn_img.resize((87, 87))
 w_pawn_img.save("w_pawn1.png")
 w_pawn_img = pygame.image.load('w_pawn1.png').convert()
 
-
 # Make image see-through
 image.set_alpha(200)
 w_pawn_img.set_alpha(200)
-
 
 # list of pieces and their position
 piece_position_list = []
 
 piece_dragging = False
 # ---------------------------------------- CREATING PIECES -----------------------------------------
+# TODO AUTOMATE THIS !!!!!
+def draw_piece(x,y,piece_type):
+    pass
+
+
 # TODO BLACK PIECES
 # Create rect based on image, and set its basic coordinates. and make 7 copies of that piece, and set them on board
 # PAWN
@@ -75,7 +83,7 @@ x = 0
 while x <= 8:
     exec(f"b_pawn{x} = b_pawn.copy()\n"
          f"piece_position_list.append(NamedRect(b_pawn{x},'b_pawn'))\n"
-         f"b_pawn{x}.x, b_pawn{x}.y = x*87,87") # i added {x} to b_pawn
+         f"b_pawn{x}.x, b_pawn{x}.y = x*87,87")  # i added {x} to b_pawn
     x = x + 1
     # KNIGHT
     # BISHOP
@@ -115,8 +123,6 @@ clock = pygame.time.Clock()
 back_buffer = pygame.Surface((screen.get_width(), screen.get_height()))
 back_buffer.fill(white)
 
-
-
 while running:
 
     # -----------------------------------------  EVENTS  --------------------------------------------
@@ -126,8 +132,8 @@ while running:
             running = False
 
         # Detect left mouse click-hold.
-        elif event.type == pygame.MOUSEBUTTONDOWN: # todo make a list of lists? conentents of that lists are:
-            if event.button == 1:   # todo [w_pawn_list, b_pawn_list, w_king_list] and those lists have piece's coords.
+        elif event.type == pygame.MOUSEBUTTONDOWN:  # todo make a list of lists? conentents of that lists are:
+            if event.button == 1:  # todo [w_pawn_list, b_pawn_list, w_king_list] and those lists have piece's coords.
                 for piece in piece_position_list:  # Consider collision for every coordinate in list.
                     if piece.rect.collidepoint(event.pos):
                         piece_dragging = True
@@ -152,7 +158,6 @@ while running:
                                     # TODO SEND THIS MOVE HERE TO ENGINE TOO !!! IF IT SAYS THAT MOVE IS LEGAL THEN STOP
                                     dragged_piece.x = (i * 87)
                                     dragged_piece.y = (j * 87)
-
 
                 dragged_piece = None  # Dragged piece needs to be specified, otherwise all pieces react to dragging.
 
