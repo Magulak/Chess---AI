@@ -13,8 +13,23 @@ class NamedRect:
         self.var_name = var_name
 
 chess_board = Chess().chess_board2
-for chess in chess_board:
-    print(chess)
+# print(chess_board[0][0])  # rook [5, 2]
+
+# Read all values from chessboard
+for i in range(len(chess_board)):
+    for j in range(len(chess_board[i])):
+        print(f"The value at index [{i}][{j}] is {chess_board[i][j]}")
+        # Using i(y) and j(x) draw that on THIS place on board
+
+"""
+ 1. correlate x,y values with correct position on board
+ chess_board [[?Y],[X]] returns ( piece_type, piece_color )
+ 
+ Iterate through every chess_board value except the ones where color = 0
+ for row in chess_board2:
+    for piece in row:
+ 
+"""
 
 # TODO Read all values from chessboard , and depending on value draw that piece on board (eg. add it to
 # TODO piece_position_list = []

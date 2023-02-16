@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="affb70f6-4098-44e2-85d4-6aa3fe042778" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ChessGui Pygame.py" beforeDir="false" afterPath="$PROJECT_DIR$/ChessGui Pygame.py" afterDir="false" />
     </list>
     <list id="4d9bc969-318d-4e4c-9e4e-aaae1c7e5dcb" name="Changes by zdroj" comment="" />
@@ -120,10 +121,10 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.main" />
       <item itemvalue="Python.ChessGUI" />
       <item itemvalue="Python.ChessGui Pygame" />
       <item itemvalue="Python.TestDragAndDrop" />
-      <item itemvalue="Python.main" />
     </list>
     <recent_temporary>
       <list>
