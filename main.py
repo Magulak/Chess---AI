@@ -216,3 +216,21 @@ class Chess:
     # #         chess_board2 = King.moveset(0, y, x, fy, fx, chess_board2)
 
 
+    # TODO if clicked button == ` then break:
+    pygame.init()
+
+    square_size = width, height = 1320, 1240
+    white, black, red = (255, 255, 255), (0, 0, 0), (255, 0, 0)
+
+    chess_board_display = pygame.display.set_mode(square_size)
+
+    chess_board_display.fill(white)
+    pygame.display.set_caption('Chess--AI')
+
+    object_width = 20
+    object_height = 20
+    board = pygame.image.load("Chess_Board.jpg")
+    board_rect = board.get_rect()
+    crashed = False
+
+
