@@ -20,14 +20,17 @@ for i in range(len(chess_board)):
     for j in range(len(chess_board[i])):
         print(f"The value at index [{i}][{j}] is {chess_board[i][j]}")
         # Using i(y) and j(x) draw that on THIS place on board
+        piece_x = j * 87
+        piece_y = i * 87
+        piece_type, piece_color = chess_board[i][j]
+        print(piece_x,piece_y,piece_type,piece_color)
 
 """
  1. correlate x,y values with correct position on board
  chess_board [[?Y],[X]] returns ( piece_type, piece_color )
  
  Iterate through every chess_board value except the ones where color = 0
- for row in chess_board2:
-    for piece in row:
+
  
 """
 
@@ -54,11 +57,9 @@ w_pawn_img = pygame.image.load('w_pawn1.png').convert()
 
 
 # Make image see-through
-# image_list = [image, w_pawn_img]
-image.set_alpha(200)  # every object from list of images gets chanel alpha at 200
+image.set_alpha(200)
 w_pawn_img.set_alpha(200)
-# for img in image_list:
-#     img.set_alpha(230)
+
 
 # list of pieces and their position
 piece_position_list = []
@@ -91,6 +92,7 @@ while x <= 8:
          f"piece_position_list.append(NamedRect(w_pawn{x},'w_pawn'))\n"
          f"w_pawn{x}.x, w_pawn{x}.y = x*87,522")
     x = x + 1
+
 # KNIGHT
 # BISHOP
 # ROOK
@@ -113,17 +115,6 @@ clock = pygame.time.Clock()
 back_buffer = pygame.Surface((screen.get_width(), screen.get_height()))
 back_buffer.fill(white)
 
-
-#
-# def convert_to_chess_coordinates(x, y):
-#     x_coordinate = chr(x // 87 + 97)
-#     y_coordinate = 8 - y // 87
-#     return x_coordinate + str(y_coordinate)
-#
-# # Example usage:
-# x = 4 * 87
-# y = 3 * 87
-# print(convert_to_chess_coordinates(x, y)) # Output: "d6"
 
 
 while running:
@@ -153,13 +144,12 @@ while running:
                         # if cursor in is in zone of a black/white square then snap it to center of that square.
                         # TODO Position of chess piece is determined by it's left upper corner, it needs better algorithm
                         # TODO Something like dragged_piece.x + 87 = (i * 87 would maybe fix it, but it's impossible to execute.
-                        # TODO Crashes when clicked on nothing.
                         for i in range(0, 8):
                             for j in range(0, 8):
                                 x_range = range(i * 87, (i * 87) + 87)
                                 y_range = range(j * 87, (j * 87) + 87)
                                 if dragged_piece.x in x_range and dragged_piece.y in y_range:
-                                    # TODO SEND THIS MOVE HERE TO ENGINE TOO !!! IF IT SAYS THAT MOVE IS LEGAL THEN CONT
+                                    # TODO SEND THIS MOVE HERE TO ENGINE TOO !!! IF IT SAYS THAT MOVE IS LEGAL THEN STOP
                                     dragged_piece.x = (i * 87)
                                     dragged_piece.y = (j * 87)
 
@@ -196,8 +186,6 @@ while running:
     for piece in b_pawn_pieces:
         screen.blit(image, piece)
 
-    # for piece in piece_position_list:
-    #     screen.blit(image, piece)
     w_pawn_pieces = [piece for piece in piece_position_list if piece.var_name == "w_pawn"]
     for piece in w_pawn_pieces:
         screen.blit(w_pawn_img, piece)
