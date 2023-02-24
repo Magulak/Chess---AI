@@ -132,3 +132,10 @@ type_board = [[1, 2, 3, 4, 5, 6, 2, 1],
  Maybe each piece should send information about its position????? Stupid idea?
  
  
+ 
+ ________________________________
+ 
+ Algorytm Min-Max oblicza dobre ruchy i przekazuje je sieci neuronowej, która może wykorzystać te informacje jako jeden ze swoich parametrów, takich jak ilość figur mogących zaatakować dane pole, możliwość roszady, itp. Sieć neuronowa może zwrócić wartości dla każdego z tych parametrów, co może pomóc algorytmowi Min-Max w podejmowaniu decyzji.
+
+Następnie algorytm Min-Max wybiera ruch, który ma największą wartość oczekiwaną wygranej, czyli tę opcję, która zwiększa szanse na zwycięstwo. Możliwe, że algorytm Min-Max będzie musiał przeszukać wiele ruchów i odpowiadających im drzew gry, zanim wybierze najlepszy ruch. Jednakże, zastosowanie sieci neuronowej może pomóc w określeniu, które ruchy warto przeszukiwać w pierwszej kolejności, co może zmniejszyć czas potrzebny do wyznaczenia optymalnego ruchu.
+ 
