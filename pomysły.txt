@@ -126,12 +126,7 @@ type_board = [[1, 2, 3, 4, 5, 6, 2, 1],
  - Modularization [GUI] [Game logic (all pieces rules)] [Game logic (specific chess type rules) [AI] [Image database]
  - Apply Drag and drop for chess pieces
  - Create class / method that will corelate Virtual board with pygame drawn board.
- 
- ________________________________
- 
- Maybe each piece should send information about its position????? Stupid idea?
- 
- 
+
  
  ________________________________
  
@@ -142,3 +137,6 @@ Następnie algorytm Min-Max wybiera ruch, który ma największą wartość oczek
 _____________________
 
 Najprawdopodobniej biblioteka z silnikiem szachowym nie przyjmuje szachownicy w formie tablicy w tablicy w tablicy tak jak jest obecnie. Dlatego lepiej poczekać z generowaniem Pionków w Gui do momentu sprawdzenia w jakiej formie dane przyjmuje ten silnik..
+
+_____________________________________________________
+Board wczytywany na początku gui powinien się generować z kodu ze standardowej notacji !
