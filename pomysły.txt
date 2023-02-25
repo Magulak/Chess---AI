@@ -140,3 +140,7 @@ Najprawdopodobniej biblioteka z silnikiem szachowym nie przyjmuje szachownicy w 
 
 _____________________________________________________
 Board wczytywany na początku gui powinien się generować z kodu ze standardowej notacji !
+
+___________________________
+
+Przy pisaniu algorytmu:  Dobrze by było gdyby dało się wymusić openingi szachowe , ponieważ na początku gry nie ma zbijania figur i min-max nie działa.
