@@ -1,3 +1,6 @@
+!UPDATE this project is now getting trasfered to https://github.com/WSB-2023-Informatyka/ML-Chess, now there will be 3 people working on it, project will be more official now.
+
+
 This project is in the beggining stage of developement.
 
 STAGES:
