@@ -1,5 +1,5 @@
-!UPDATE this project is now getting trasfered to https://github.com/WSB-2023-Informatyka/ML-Chess, now there will be 3 people contributing to it, project will be used for Engineering Thesis in Wyższa Szkoła Bankowa
-
+**!UPDATE this project is now getting trasfered to https://github.com/WSB-2023-Informatyka/ML-Chess, now there will be 3 people contributing to it, project will be used for Engineering Thesis in Wyższa Szkoła Bankowa
+**
 
 This project is in the beggining stage of developement.
 
